@@ -38,8 +38,8 @@
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
               "src/assets/js/jquery.min.js",
               "src/assets/js/jquery-ui-1.13.2.js",
-              "src/assets/js/app.min.js",
-              "src/assets/js/vendor.min.js"
+              "src/assets/js/vendor.min.js",
+              "src/assets/js/app.min.js"
             ]
           },
           "configurations": {
