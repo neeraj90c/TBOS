@@ -75,7 +75,7 @@ namespace Infrastructure.Persistance.Services.TBOS.Masters.Branch
                         Longitude = createBranch.Longitude,
                         ExciseNo = createBranch.ExciseNo,
                         PanNo = createBranch.PanNo,
-                        GstTinNo = createBranch.GstTinNo,
+                        GSTIN_No = createBranch.GSTIN_No,
                         ActionUser = createBranch.ActionUser,
                         CompanyId = createBranch.CompanyId
                     }, commandType: CommandType.StoredProcedure);
@@ -172,7 +172,7 @@ namespace Infrastructure.Persistance.Services.TBOS.Masters.Branch
                         Longitude = updateBranch.Longitude,
                         ExciseNo = updateBranch.ExciseNo,
                         PanNo = updateBranch.PanNo,
-                        GstTinNo = updateBranch.GstTinNo,
+                        GSTIN_No = updateBranch.GSTIN_No,
                         IsDefaultBranch = updateBranch.IsDefaultBranch,
                         CompanyId = updateBranch.CompanyId,
                         ActionUser = updateBranch.ActionUser

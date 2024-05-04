@@ -39,7 +39,7 @@ namespace Application.DTOs.TBOS.Masters
         public string Longitude { get; set; }
         public string ExciseNo { get; set; }
         public string PanNo { get; set; }
-        public string GstTinNo { get; set; }
+        public string GSTIN_No { get; set; }
         public int? IsDefaultBranch { get; set; }
         public string CompanyId { get; set; }
         public int IsActive { get; set; }
@@ -87,7 +87,7 @@ namespace Application.DTOs.TBOS.Masters
         public string Longitude { get; set; }
         public string ExciseNo { get; set; }
         public string PanNo { get; set; }
-        public string GstTinNo { get; set; }
+        public string GSTIN_No { get; set; }
         public string ActionUser { get; set; }
         public string CompanyId { get; set; }
     }
@@ -123,7 +123,7 @@ namespace Application.DTOs.TBOS.Masters
         public string Longitude { get; set; }
         public string ExciseNo { get; set; }
         public string PanNo { get; set; }
-        public string GstTinNo { get; set; }
+        public string GSTIN_No { get; set; }
         public int IsDefaultBranch { get; set; }
         public string CompanyId { get; set; }
         public string ActionUser { get; set; }
