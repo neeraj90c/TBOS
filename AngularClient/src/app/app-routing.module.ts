@@ -6,10 +6,11 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path:'login', component :LoginComponent, title:'Login'},
-  { path:'signup', component :SignupComponent, title:'SignUp'},
-  { path:'forgot-password', component :ForgotPasswordComponent, title:'Password Reset'},
-  { path:'home', component :HomeComponent, title:'Dashboard'},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent, title: 'Login' },
+  { path: 'signup', component: SignupComponent, title: 'SignUp' },
+  { path: 'forgot-password', component: ForgotPasswordComponent, title: 'Password Reset' },
+  { path: 'home', component: HomeComponent, title: 'Dashboard' },
 ];
 
 @NgModule({
