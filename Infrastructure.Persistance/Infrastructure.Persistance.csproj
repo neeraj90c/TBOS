@@ -21,4 +21,12 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\TBOS\Inventory\" />
+    <Folder Include="Services\TBOS\Billing\" />
+    <Folder Include="Services\TBOS\Financial\" />
+    <Folder Include="Services\TBOS\Masters\Agent\" />
+    <Folder Include="Services\TBOS\Masters\Customer\" />
+  </ItemGroup>
+
 </Project>
