@@ -26,20 +26,16 @@
               "src/assets/images"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
               "src/assets/css/style.css",
               "src/assets/css/icons.min.css",
-              "src/assets/css/app.min.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/assets/css/app.min.css"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "src/assets/js/jquery.min.js",
-              "src/assets/js/jquery-ui-1.13.2.js",
-              "src/assets/js/vendor.min.js",
-              "src/assets/js/app.min.js"
+              "node_modules/@popperjs/core/dist/umd/popper.js"
             ]
           },
           "configurations": {
