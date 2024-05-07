@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Application.Features.TBOS.Masters.Customer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace Application.DTOs.TBOS.Masters
         public string CustomerCode { get; set; }
         public string CustomerName { get; set; }
         public string Transport { get; set; }
-        public string AgentId { get; set; }
+        public int? AgentId { get; set; }
         public int? PaymentTerm { get; set; }
         public int? BranchId { get; set; }
         public string CustomerBranch { get; set; }
@@ -39,8 +40,10 @@ namespace Application.DTOs.TBOS.Masters
         public string ExportGST { get; set; }
         public string CreatedBy { get; set; }
         public DateTime? CreatedOn { get; set; }
-        public string MdifiedBy { get; set; }
+        public string ModifiedBy { get; set; }
         public DateTime? ModifiedOn { get; set; }
+        public int IsActive { get; set; }
+        public int IsDeleted { get; set; }
     }
 
 
@@ -48,7 +51,7 @@ namespace Application.DTOs.TBOS.Masters
     {
         public string CustomerName { get; set; }
         public string Transport { get; set; }
-        public string AgentId { get; set; }
+        public int? AgentId { get; set; }
         public int PaymentTerm { get; set; }
         public int BranchId { get; set; }
         public string CustomerBranch { get; set; }
@@ -79,10 +82,9 @@ namespace Application.DTOs.TBOS.Masters
     public class UpdateCustomer
     {
         public int CustomerId { get; set; }
-        public string CustomerCode { get; set; }
         public string CustomerName { get; set; }
         public string Transport { get; set; }
-        public string AgentId { get; set; }
+        public int AgentId { get; set; }
         public int PaymentTerm { get; set; }
         public int BranchId { get; set; }
         public string CustomerBranch { get; set; }
@@ -110,4 +112,13 @@ namespace Application.DTOs.TBOS.Masters
         public string ActionUser { get; set; }
     }
 
+    public class DeleteCustomer
+    {
+        public int CustomerId { get; set; }
+        public string ActionUser { get; set; }
+    }
+        public class CustomerList
+    {
+        public IEnumerable<CustomerMasterDTO> Items { get; set; }
+    }
 }
