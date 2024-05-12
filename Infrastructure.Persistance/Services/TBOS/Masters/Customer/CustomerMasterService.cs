@@ -1,4 +1,5 @@
-﻿using Application.DTOs.TBOS.Masters;
+﻿using Application.DTOs.TBOS.Common;
+using Application.DTOs.TBOS.Masters;
 using Application.Interfaces.TBOS.Masters.Customer;
 using Dapper;
 using Domain.Settings;
@@ -9,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,8 +25,10 @@ namespace Infrastructure.Persistance.Services.TBOS.Masters.Customer
         private const string SP_CustomerMaster_Insert = "master.CustomerMaster_Insert";
         private const string SP_CustomerMaster_Update = "master.CustomerMaster_Update";
         private const string SP_CustomerMaster_ReadAll = "master.CustomerMaster_ReadAll";
+        private const string SP_CustomerMaster_ReadAllPaginated = "master.CustomerMaster_ReadAllPaginated";
         private const string SP_CustomerMaster_ReadByCustomerId = "master.CustomerMaster_ReadByCustomerId";
         private const string SP_CustomerMaster_Delete = "master.CustomerMaster_Delete";
+       
 
         public CustomerMasterService(IOptions<ConnectionSettings> connectionSettings, ILogger<CustomerMasterService> logger, IOptions<APISettings> settings) : base(connectionSettings.Value.AppKeyPath)
         {
@@ -49,7 +53,7 @@ namespace Infrastructure.Persistance.Services.TBOS.Masters.Customer
                         BranchId = createCustomer.BranchId,
                         CustomerBranch = createCustomer.CustomerBranch,
                         Status = createCustomer.Status,
-                        TaxFrom = createCustomer.TaxFrom,
+                        TaxForm = createCustomer.TaxForm,
                         Tin_No = createCustomer.Tin_No,
                         AgentCommission = createCustomer.AgentCommission,
                         PaymentDay = createCustomer.PaymentDay,
@@ -100,7 +104,7 @@ namespace Infrastructure.Persistance.Services.TBOS.Masters.Customer
                         BranchId = updateCustomer.BranchId,
                         CustomerBranch = updateCustomer.CustomerBranch,
                         Status = updateCustomer.Status,
-                        TaxFrom = updateCustomer.TaxFrom,
+                        TaxForm = updateCustomer.TaxForm,
                         Tin_No = updateCustomer.Tin_No,
                         AgentCommission = updateCustomer.AgentCommission,
                         PaymentDay = updateCustomer.PaymentDay,
@@ -150,6 +154,31 @@ namespace Infrastructure.Persistance.Services.TBOS.Masters.Customer
             }
             return response;
         }
+
+
+        public async Task<CustomerListPaginated> ReadAllPaginated(PaginatedDTO paginatedDTO)
+        {
+            CustomerListPaginated response = new CustomerListPaginated();
+            _logger.LogInformation($"Started reading all Customers");
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(base.ConnectionString))
+                {
+                    response.Items = await connection.QueryAsync<CustomerMasterDTOPaginated>(SP_CustomerMaster_ReadAllPaginated, new
+                    {
+                        PageSize = paginatedDTO.PageSize,
+                        PageNo = paginatedDTO.PageNo
+                    }, commandType: CommandType.StoredProcedure);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return response;
+        }
+
 
         public async Task<CustomerMasterDTO> ReadByCustomerId(int CustomerId)
         {

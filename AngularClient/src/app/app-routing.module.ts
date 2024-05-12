@@ -3,14 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './TBOS/Home/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, title: 'Login' },
   { path: 'signup', component: SignupComponent, title: 'SignUp' },
   { path: 'forgot-password', component: ForgotPasswordComponent, title: 'Password Reset' },
-  { path: 'home', component: HomeComponent, title: 'Dashboard' },
+  { path: '', loadChildren: () => import('./TBOS/tbos.module').then(m => m.TbosModule), title: 'Dashboard' },
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
-﻿using Application.DTOs.TBOS.Masters;
+﻿using Application.DTOs.TBOS.Common;
+using Application.DTOs.TBOS.Masters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Application.Interfaces.TBOS.Masters.Customer
         public Task<CustomerMasterDTO> Create(CreateCustomer createCustomer);
         public Task<CustomerMasterDTO> Update(UpdateCustomer updateCustomer);
         public Task<CustomerList> ReadAll();
+        public Task<CustomerListPaginated> ReadAllPaginated(PaginatedDTO paginatedDTO);
         public Task<CustomerMasterDTO> ReadByCustomerId(int CustomerId);
         public Task<CustomerList> Delete(DeleteCustomer deleteCustomer);
 

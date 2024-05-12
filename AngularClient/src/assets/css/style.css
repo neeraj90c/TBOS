@@ -14,6 +14,40 @@ body {
     }
 }
 
+
+@font-face {
+    font-family: Nunito;
+    src: url(../fonts/Nunito-Light.eot);
+    src: local("Nunito Light"), local("Nunito-Light"), url(../fonts/Nunito-Light-1.eot) format("embedded-opentype"), url(../fonts/Nunito-Light.woff) format("woff"), url(../fonts/Nunito-Light.ttf) format("truetype"), url(../fonts/Nunito-Light.svg) format("svg");
+    font-weight: 300;
+    font-style: normal
+}
+
+@font-face {
+    font-family: Nunito;
+    src: url(../fonts/Nunito-Regular.eot);
+    src: local("Nunito Regular"), local("Nunito-Regular"), url(../fonts/Nunito-Regular-1.eot) format("embedded-opentype"), url(../fonts/Nunito-Regular.woff) format("woff"), url(../fonts/Nunito-Regular.ttf) format("truetype"), url(../fonts/Nunito-Regular.svg) format("svg");
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: Nunito;
+    src: url(../fonts/Nunito-SemiBold.eot);
+    src: local("Nunito SemiBold"), local("Nunito-SemiBold"), url(../fonts/Nunito-SemiBold-1.eot) format("embedded-opentype"), url(../fonts/Nunito-SemiBold.woff) format("woff"), url(../fonts/Nunito-SemiBold.ttf) format("truetype"), url(../fonts/Nunito-SemiBold.svg) format("svg");
+    font-weight: 600;
+    font-style: normal
+}
+
+@font-face {
+    font-family: Nunito;
+    src: url(../fonts/Nunito-Bold.eot);
+    src: local("Nunito Bold"), local("Nunito-Bold"), url(../fonts/Nunito-Bold-1.eot) format("embedded-opentype"), url(../fonts/Nunito-Bold.woff) format("woff"), url(../fonts/Nunito-Bold.ttf) format("truetype"), url(../fonts/Nunito-Bold.svg) format("svg");
+    font-weight: 700;
+    font-style: normal
+}
+
+
 .logo {
     display: block;
     line-height: 70px;
@@ -990,11 +1024,11 @@ body[data-layout=topnav] .content-page {
 .page-title-box .page-title {
     font-size: 18px;
     margin: 0;
-    line-height: 75px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    color: inherit
+    color: #000; 
+    margin-top: 10px;
 }
 
 .page-title-box .page-title-right {
@@ -2316,9 +2350,9 @@ select.form-control-sm:not([size]):not([multiple]) {
     height: 15px
 }
 
-body.loading {
+/* body.loading {
     visibility: hidden
-}
+} */
 
 a,
 button {
@@ -2452,7 +2486,7 @@ input[data-switch=primary]:checked+label {
 }
 
 .cta-box {
-    background-image: url(../images/waves.png);
+    background-image: url(../images/bg-auth.jpg);
     background-size: cover
 }
 
@@ -2621,3 +2655,51 @@ body.auth-fluid-pages[data-leftbar-compact-mode=condensed] {
 }
 
 
+.masterTabs .nav-tabs.nav-bordered li a.active {
+   border: none;
+   background-color: transparent;
+   color: #002a80;
+   font-weight: bold;
+}
+
+.subTabs .nav-tabs.nav-bordered li a.active{border: none;
+border-bottom: 2px solid #054ba6; color: #054ba6; font-weight: 600;}
+
+.subTabs .table i{font-size: 16px;}
+/* #masterNameSearchInput , #masterNoSearchInput{width: 120px;} */
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+    height: 5px;
+    
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    height: 5px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+  /* .tableHeight{min-height: 65vh;} */
+  .action i:hover{cursor: pointer;}
+
+  
+  .menuList{padding: 0px 15px; font-weight: 600;}
+  .menuList:hover{color: #002a80; cursor: pointer;}
+  .scrollable{height: 80vh; overflow-x: auto}
+  .formHeader{color: #002a80; font-weight: bold; margin-bottom: 0px;}
+
+ 

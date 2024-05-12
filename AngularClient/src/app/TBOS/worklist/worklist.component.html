@@ -1,0 +1,817 @@
+<div class="container-fluid ">
+    <!-- start page title -->
+
+        <div class="page-title-box">
+          <h4 class="page-title">Work List Page</h4>
+        </div>
+     
+    <!-- end page title -->
+   <div class="masterTabs">
+    <ul class="nav nav-tabs nav-bordered border-0 shadow-sm mb-3">
+      <li class="nav-item">
+          <a href="#Sales-b1" data-bs-toggle="tab" aria-expanded="false" class="nav-link active d-flex gap-1">
+              <i class="mdi mdi-finance "></i>
+              <span class="d-none d-md-block">Sales</span>
+          </a>
+      </li>
+      <li class="nav-item">
+          <a href="#Purchase-b1" data-bs-toggle="tab" aria-expanded="true" class="nav-link d-flex gap-1">
+              <i class="mdi mdi-cart-check"></i>
+              <span class="d-none d-md-block">Purchase</span>
+          </a>
+      </li>
+      <li class="nav-item">
+          <a href="#settings-b1" data-bs-toggle="tab" aria-expanded="false" class="nav-link  d-flex gap-1">
+              <i class="uil uil-users-alt"></i>
+              <span class="d-none d-md-block">Job Worker</span>
+          </a>
+      </li>
+      <li class="nav-item">
+        <a href="#CRM-b1" data-bs-toggle="tab" aria-expanded="false" class="nav-link  d-flex gap-1">
+            <i class="mdi mdi-application-cog "></i>
+            <span class="d-none d-md-block">CRM</span>
+        </a>
+    </li>
+    </ul>
+  
+  <div class="tab-content bg-white subTabs" >
+      <div class="tab-pane show active" id="Sales-b1">
+          <ul class="nav nav-tabs nav-bordered border-0 mb-3">
+            <li class="nav-item">
+                <a href="#PaymentToBeCollected" data-bs-toggle="tab" aria-expanded="false" class="nav-link active pb-0 ">
+                    <!-- <i class="mdi mdi-finance "></i> -->
+                    <span >Payment To Be Collected</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#ChequeToBeDeposited" data-bs-toggle="tab" aria-expanded="true" class="nav-link  pb-0">
+                    <!-- <i class="mdi mdi-cart-check"></i> -->
+                    <span >Cheque To Be Deposited</span>
+                </a>
+            </li>
+            
+          </ul>
+        
+          <div class="tab-content bg-white" >
+              <div class="tab-pane show active" id="PaymentToBeCollected">
+                <div class="topSearch">
+                  <div class="form">
+                  <div class="row align-items-center">
+                    <div class="col-lg-3 mt-1">
+                      <div class="d-flex gap-3">
+                        <label for="example-date" class="form-label "  style="width: 50%;">Start Date</label>
+                        <input class="form-control" id="example-date" type="date" name="date">
+                    </div>
+                    </div>
+                    <div class="col-lg-3  mt-1">
+                      <div class="d-flex gap-3">
+                        <label for="example-date" class="form-label " style="width: 50%;">End Date</label>
+                        <input class="form-control" id="example-date" type="date" name="date">
+                    </div>
+                    </div>
+                    <div class="col-lg-1">                      
+                      <div class="btn btn-primary">Search</div>
+                    </div>
+                    <div class="col-lg-2 ms-auto text-end">
+                      <button type="button" class="btn btn-light"><i class="uil uil-filter-slash me-1"></i> <span>Clear all</span> </button>
+                    </div>
+                    
+                  </div>                   
+                  </div>
+                </div>
+
+              <div class="table-responsive mt-3">
+                <table class="table table-bordered table-sm mb-0">
+                  <thead class="bg-light">
+                      <tr>
+                          
+                        <th scope="col">
+                          <span id="masterNo">Master No.</span>
+                          <input id="masterNoSearchInput" type="search" class="form-control form-control-sm"  placeholder="" style="display: none;">
+                      
+                        <span class="text-end "> <i id="searchIconNo" class="mdi mdi-filter-outline"></i></span>
+                          </th>
+                          <th scope="col">
+                            <span id="masterName">Master Name</span>
+                            <input id="masterNameSearchInput" type="search" class="form-control form-control-sm"  placeholder="" style="display: none;">
+                            <i id="searchIconName" class="mdi mdi-filter-outline"></i>
+                            </th>
+                          
+                          <th scope="col">Master Date</th>
+                          <th scope="col">Master Amount</th>
+                          <th scope="col">Master Description</th>
+                          <th scope="col"  style="width: 2%;">Message</th>
+                          <th scope="col" style="width: 2%;">CRM</th>
+                      </tr>
+                  </thead>
+                  <tbody >
+                      <tr>
+                          <td>Khashish</td>
+                          <td>INV0000071</td>
+                          <td>08/4/2019</td>
+                          <td>15,852.00</td>
+                          <td>Bal : 15, 852</td>
+                          <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                          <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                      </tr>                
+                      <tr>
+                          <td>Khashish</td>
+                          <td>INV0000071</td>
+                          <td>08/4/2019</td>
+                          <td>15,852.00</td>
+                          <td>Bal : 15, 852</td>
+                          <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                          <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                      </tr>  
+                      <tr>
+                        <td>Khashish</td>
+                      <td>INV0000071</td>
+                      <td>08/4/2019</td>
+                      <td>15,852.00</td>
+                      <td>Bal : 15, 852</td>
+                      <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                      <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                  </tr>  
+                  <tr>
+                    <td>Khashish</td>
+                  <td>INV0000071</td>
+                  <td>08/4/2019</td>
+                  <td>15,852.00</td>
+                  <td>Bal : 15, 852</td>
+                  <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                  <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+              </tr>  
+              <tr>
+                <td>Khashish</td>
+              <td>INV0000071</td>
+              <td>08/4/2019</td>
+              <td>15,852.00</td>
+              <td>Bal : 15, 852</td>
+              <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+              <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+          </tr>  
+          <tr>
+            <td>Khashish</td>
+          <td>INV0000071</td>
+          <td>08/4/2019</td>
+          <td>15,852.00</td>
+          <td>Bal : 15, 852</td>
+          <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+          <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+      </tr>  
+      <tr>
+        <td>Khashish</td>
+      <td>INV0000071</td>
+      <td>08/4/2019</td>
+      <td>15,852.00</td>
+      <td>Bal : 15, 852</td>
+      <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+      <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+  </tr>  
+                  </tbody>
+              </table>
+              </div>
+              </div>
+              <div class="tab-pane " id="ChequeToBeDeposited">
+                <div class="topSearch">
+                  <div class="form">
+                  <div class="row align-items-center">
+                    <div class="col-lg-3">
+                      <div class="d-flex gap-3">
+                        <label for="example-date" class="form-label "  style="width: 50%;">Start Date</label>
+                        <input class="form-control" id="example-date" type="date" name="date">
+                    </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="d-flex gap-3">
+                        <label for="example-date" class="form-label " style="width: 50%;">End Date</label>
+                        <input class="form-control" id="example-date" type="date" name="date">
+                    </div>
+                    </div>
+                    <div class="col-lg-1">                      
+                      <div class="btn btn-primary">Search</div>
+                    </div>
+                    <div class="col-lg-5 ms-auto text-end">
+                      <button type="button" class="btn btn-light"><i class="uil uil-print me-1"></i> <span>Print</span> </button>
+                      <span type="button" class="btn btn-light"><i class="uil uil-filter-slash me-1"></i> <span>Clear all</span> </span>
+                    </div>
+                    
+                  </div>                   
+                  </div>
+                </div>
+
+              <div class="table-responsive mt-3">
+                <table class="table table-bordered table-sm mb-0">
+                  <thead class="bg-light">
+                      <tr>
+                          
+                        <th scope="col">
+                          <span id="masterNo">Master No.</span>
+                          <input id="masterNoSearchInput" type="search" class="form-control form-control-sm"  placeholder="" style="display: none;">
+                      
+                        <span class="text-end "> <i id="searchIconNo" class="mdi mdi-filter-outline"></i></span>
+                          </th>
+                          <th scope="col">
+                            <span id="masterName">Master Name</span>
+                            <input id="masterNameSearchInput" type="search" class="form-control form-control-sm"  placeholder="" style="display: none;">
+                            <i id="searchIconName" class="mdi mdi-filter-outline"></i>
+                            </th>
+                          
+                          <th scope="col">Master Date</th>
+                          <th scope="col">Master Amount</th>
+                          <th scope="col">Master Description</th>
+                          <th scope="col"  style="width: 2%;">Message</th>
+                          <th scope="col" style="width: 2%;">CRM</th>
+                          <th scope="col" class="text-center" > <i class="mdi mdi-select-multiple" style="font-size: 22px;"></i></th>
+                      </tr>
+                  </thead>
+                  <tbody >
+                      <tr>
+                          <td>Khashish</td>
+                          <td>INV0000071</td>
+                          <td>08/4/2019</td>
+                          <td>15,852.00</td>
+                          <td>Bal : 15, 852</td>
+                          <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                          <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                          <td class="text-center">   <input type="checkbox" class="form-check-input" ></td>
+                      </tr>                
+                      <tr>
+                          <td>Khashish</td>
+                          <td>INV0000071</td>
+                          <td>08/4/2019</td>
+                          <td>15,852.00</td>
+                          <td>Bal : 15, 852</td>
+                          <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                          <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                          <td class="text-center">   <input type="checkbox" class="form-check-input" ></td>
+                      </tr>  
+                     
+                  <tr>
+                    <td>Khashish</td>
+                  <td>INV0000071</td>
+                  <td>08/4/2019</td>
+                  <td>15,852.00</td>
+                  <td>Bal : 15, 852</td>
+                  <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                  <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                  <td class="text-center">   <input type="checkbox" class="form-check-input" ></td>
+              </tr>  
+            
+           
+      <tr>
+        <td>Khashish</td>
+      <td>INV0000071</td>
+      <td>08/4/2019</td>
+      <td>15,852.00</td>
+      <td>Bal : 15, 852</td>
+      <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+      <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+      <td class="text-center">   <input type="checkbox" class="form-check-input" ></td>
+  </tr>  
+                  </tbody>
+              </table>
+              </div>
+              </div>
+              
+          </div>                
+      </div>
+      <div class="tab-pane " id="Purchase-b1">
+        <div class="topSearch">
+          <div class="form">
+          <div class="row align-items-center">
+            <div class="col-lg-3 mt-1">
+              <div class="d-flex gap-3">
+                <label for="example-date" class="form-label "  style="width: 50%;">Start Date</label>
+                <input class="form-control" id="example-date" type="date" name="date">
+            </div>
+            </div>
+            <div class="col-lg-3  mt-1">
+              <div class="d-flex gap-3">
+                <label for="example-date" class="form-label " style="width: 50%;">End Date</label>
+                <input class="form-control" id="example-date" type="date" name="date">
+            </div>
+            </div>
+            <div class="col-lg-1">                      
+              <div class="btn btn-primary">Search</div>
+            </div>
+            <div class="col-lg-2 ms-auto text-end">
+              <button type="button" class="btn btn-light"><i class="uil uil-filter-slash me-1"></i> <span>Clear all</span> </button>
+            </div>
+            
+          </div>                   
+          </div>
+        </div>
+        <ul class="nav nav-tabs nav-bordered border-0 mb-3 mt-3">
+          <li class="nav-item">
+              <a href="#PaymentToBeMade" data-bs-toggle="tab" aria-expanded="false" class="nav-link active pb-0 ">
+                  <!-- <i class="mdi mdi-finance "></i> -->
+                  <span >Payment To Be Made</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a href="#paymentsCreated" data-bs-toggle="tab" aria-expanded="true" class="nav-link  pb-0">
+                  <!-- <i class="mdi mdi-cart-check"></i> -->
+                  <span >Payment Created</span>
+              </a>
+          </li>
+          
+        </ul>
+      
+        <div class="tab-content bg-white" >
+          
+            <div class="tab-pane show active" id="PaymentToBeMade">
+            
+
+            <div class="table-responsive mt-3">
+              <table class="table table-bordered table-sm mb-0">
+                <thead class="bg-light">
+                    <tr>
+                        
+                      <th scope="col">
+                        <span id="masterNo">Master No.</span>
+                        <input id="masterNoSearchInput" type="search" class="form-control form-control-sm"  placeholder="" style="display: none;">
+                    
+                      <span class="text-end "> <i id="searchIconNo" class="mdi mdi-filter-outline"></i></span>
+                        </th>
+                        <th scope="col">
+                          <span id="masterName">Master Name</span>
+                          <input id="masterNameSearchInput" type="search" class="form-control form-control-sm"  placeholder="" style="display: none;">
+                          <i id="searchIconName" class="mdi mdi-filter-outline"></i>
+                          </th>
+                        
+                        <th scope="col">Master Date</th>
+                        <th scope="col">Master Amount</th>
+                        <th scope="col">Master Description</th>
+                        <th scope="col"  style="width: 2%;">Message</th>
+                        <th scope="col" style="width: 2%;">CRM</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr>
+                        <td>Khashish</td>
+                        <td>INV0000071</td>
+                        <td>08/4/2019</td>
+                        <td>15,852.00</td>
+                        <td>Bal : 15, 852</td>
+                        <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                        <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                    </tr>                
+                    <tr>
+                        <td>Khashish</td>
+                        <td>INV0000071</td>
+                        <td>08/4/2019</td>
+                        <td>15,852.00</td>
+                        <td>Bal : 15, 852</td>
+                        <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                        <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                    </tr>  
+                    <tr>
+                      <td>Khashish</td>
+                    <td>INV0000071</td>
+                    <td>08/4/2019</td>
+                    <td>15,852.00</td>
+                    <td>Bal : 15, 852</td>
+                    <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                    <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                </tr>  
+                <tr>
+                  <td>Khashish</td>
+                <td>INV0000071</td>
+                <td>08/4/2019</td>
+                <td>15,852.00</td>
+                <td>Bal : 15, 852</td>
+                <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+            </tr>  
+            <tr>
+              <td>Khashish</td>
+            <td>INV0000071</td>
+            <td>08/4/2019</td>
+            <td>15,852.00</td>
+            <td>Bal : 15, 852</td>
+            <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+            <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+        </tr>  
+        <tr>
+          <td>Khashish</td>
+        <td>INV0000071</td>
+        <td>08/4/2019</td>
+        <td>15,852.00</td>
+        <td>Bal : 15, 852</td>
+        <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+        <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+    </tr>  
+    <tr>
+      <td>Khashish</td>
+    <td>INV0000071</td>
+    <td>08/4/2019</td>
+    <td>15,852.00</td>
+    <td>Bal : 15, 852</td>
+    <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+    <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+</tr>  
+                </tbody>
+            </table>
+            </div>
+            </div>
+            <div class="tab-pane " id="paymentsCreated">
+             
+            <div class="table-responsive mt-3">
+              <table class="table table-bordered table-sm mb-0">
+                <thead class="bg-light">
+                    <tr>
+                        
+                      <th scope="col">
+                        <span id="masterNo">Master No.</span>
+                        <input id="masterNoSearchInput" type="search" class="form-control form-control-sm"  placeholder="" style="display: none;">
+                    
+                      <span class="text-end "> <i id="searchIconNo" class="mdi mdi-filter-outline"></i></span>
+                        </th>
+                        <th scope="col">
+                          <span id="masterName">Master Name</span>
+                          <input id="masterNameSearchInput" type="search" class="form-control form-control-sm"  placeholder="" style="display: none;">
+                          <i id="searchIconName" class="mdi mdi-filter-outline"></i>
+                          </th>
+                        
+                        <th scope="col">Master Date</th>
+                        <th scope="col">Master Amount</th>
+                        <th scope="col">Master Description</th>
+                        <th scope="col"  style="width: 2%;">Message</th>
+                        <th scope="col" style="width: 2%;">CRM</th>
+                        <th scope="col" class="text-center" > <i class="mdi mdi-select-multiple" style="font-size: 22px;"></i></th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr>
+                        <td>Khashish</td>
+                        <td>INV0000071</td>
+                        <td>08/4/2019</td>
+                        <td>15,852.00</td>
+                        <td>Bal : 15, 852</td>
+                        <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                        <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                        <td class="text-center">   <input type="checkbox" class="form-check-input" ></td>
+                    </tr>                
+                    <tr>
+                        <td>Khashish</td>
+                        <td>INV0000071</td>
+                        <td>08/4/2019</td>
+                        <td>15,852.00</td>
+                        <td>Bal : 15, 852</td>
+                        <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                        <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                        <td class="text-center">   <input type="checkbox" class="form-check-input" ></td>
+                    </tr>  
+                   
+                    <tr>
+                      <td>Khashish</td>
+                      <td>INV0000071</td>
+                      <td>08/4/2019</td>
+                      <td>15,852.00</td>
+                      <td>Bal : 15, 852</td>
+                      <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                      <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                      <td class="text-center">   <input type="checkbox" class="form-check-input" ></td>
+                    </tr>  
+          
+         
+                    <tr>
+                      <td>Khashish</td>
+                      <td>INV0000071</td>
+                      <td>08/4/2019</td>
+                      <td>15,852.00</td>
+                      <td>Bal : 15, 852</td>
+                      <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                      <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                      <td class="text-center">   <input type="checkbox" class="form-check-input" ></td>
+                    </tr>  
+             </tbody>
+            </table>
+            </div>
+            </div>
+            
+        </div>  
+      </div>
+      <div class="tab-pane" id="settings-b1">
+        <div class="topSearch">
+          <div class="form">
+          <div class="row align-items-center">
+            <div class="col-lg-3 mt-1">
+              <div class="d-flex gap-3">
+                <label for="example-date" class="form-label "  style="width: 50%;">Start Date</label>
+                <input class="form-control" id="example-date" type="date" name="date">
+            </div>
+            </div>
+            <div class="col-lg-3  mt-1">
+              <div class="d-flex gap-3">
+                <label for="example-date" class="form-label " style="width: 50%;">End Date</label>
+                <input class="form-control" id="example-date" type="date" name="date">
+            </div>
+            </div>
+            <div class="col-lg-1">                      
+              <div class="btn btn-primary">Search</div>
+            </div>
+            <div class="col-lg-2 ms-auto text-end">
+              <button type="button" class="btn btn-light"><i class="uil uil-filter-slash me-1"></i> <span>Clear all</span> </button>
+            </div>
+            
+          </div>                   
+          </div>
+        </div>
+        <ul class="nav nav-tabs nav-bordered border-0 mb-3 mt-3">
+          <li class="nav-item">
+              <a href="#ABC" data-bs-toggle="tab" aria-expanded="false" class="nav-link active pb-0 ">
+                  <!-- <i class="mdi mdi-finance "></i> -->
+                  <span >ABC</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a href="#XYZ" data-bs-toggle="tab" aria-expanded="true" class="nav-link  pb-0">
+                  <!-- <i class="mdi mdi-cart-check"></i> -->
+                  <span >XYZ</span>
+              </a>
+          </li>
+          
+        </ul>
+      
+        <div class="tab-content bg-white" >
+          
+            <div class="tab-pane show active" id="ABC">
+            
+
+            <div class="table-responsive mt-3">
+              <table class="table table-bordered table-sm mb-0">
+                <thead class="bg-light">
+                    <tr>
+                        
+                      <th scope="col">
+                        <span id="masterNo">Master No.</span>
+                        <input id="masterNoSearchInput" type="search" class="form-control form-control-sm"  placeholder="" style="display: none;">
+                    
+                      <span class="text-end "> <i id="searchIconNo" class="mdi mdi-filter-outline"></i></span>
+                        </th>
+                        <th scope="col">
+                          <span id="masterName">Master Name</span>
+                          <input id="masterNameSearchInput" type="search" class="form-control form-control-sm"  placeholder="" style="display: none;">
+                          <i id="searchIconName" class="mdi mdi-filter-outline"></i>
+                          </th>
+                        
+                        <th scope="col">Master Date</th>
+                        <th scope="col">Master Amount</th>
+                        <th scope="col">Master Description</th>
+                        <th scope="col"  style="width: 2%;">Message</th>
+                        <th scope="col" style="width: 2%;">CRM</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr>
+                        <td>Khashish</td>
+                        <td>INV0000071</td>
+                        <td>08/4/2019</td>
+                        <td>15,852.00</td>
+                        <td>Bal : 15, 852</td>
+                        <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                        <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                    </tr>                
+                    <tr>
+                        <td>Khashish</td>
+                        <td>INV0000071</td>
+                        <td>08/4/2019</td>
+                        <td>15,852.00</td>
+                        <td>Bal : 15, 852</td>
+                        <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                        <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                    </tr>  
+                    <tr>
+                      <td>Khashish</td>
+                    <td>INV0000071</td>
+                    <td>08/4/2019</td>
+                    <td>15,852.00</td>
+                    <td>Bal : 15, 852</td>
+                    <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                    <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                </tr>  
+                <tr>
+                  <td>Khashish</td>
+                <td>INV0000071</td>
+                <td>08/4/2019</td>
+                <td>15,852.00</td>
+                <td>Bal : 15, 852</td>
+                <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+            </tr>  
+            <tr>
+              <td>Khashish</td>
+            <td>INV0000071</td>
+            <td>08/4/2019</td>
+            <td>15,852.00</td>
+            <td>Bal : 15, 852</td>
+            <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+            <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+        </tr>  
+        <tr>
+          <td>Khashish</td>
+        <td>INV0000071</td>
+        <td>08/4/2019</td>
+        <td>15,852.00</td>
+        <td>Bal : 15, 852</td>
+        <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+        <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+    </tr>  
+    <tr>
+      <td>Khashish</td>
+    <td>INV0000071</td>
+    <td>08/4/2019</td>
+    <td>15,852.00</td>
+    <td>Bal : 15, 852</td>
+    <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+    <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+</tr>  
+                </tbody>
+            </table>
+            </div>
+            </div>
+            <div class="tab-pane " id="XYZ">
+             
+            <div class="table-responsive mt-3">
+              <table class="table table-bordered table-sm mb-0">
+                <thead class="bg-light">
+                    <tr>
+                        
+                      <th scope="col">
+                        <span id="masterNo">Master No.</span>
+                        <input id="masterNoSearchInput" type="search" class="form-control form-control-sm"  placeholder="" style="display: none;">
+                    
+                      <span class="text-end "> <i id="searchIconNo" class="mdi mdi-filter-outline"></i></span>
+                        </th>
+                        <th scope="col">
+                          <span id="masterName">Master Name</span>
+                          <input id="masterNameSearchInput" type="search" class="form-control form-control-sm"  placeholder="" style="display: none;">
+                          <i id="searchIconName" class="mdi mdi-filter-outline"></i>
+                          </th>
+                        
+                        <th scope="col">Master Date</th>
+                        <th scope="col">Master Amount</th>
+                        <th scope="col">Master Description</th>
+                        <th scope="col"  style="width: 2%;">Message</th>
+                        <th scope="col" style="width: 2%;">CRM</th>
+                        <th scope="col" class="text-center" > <i class="mdi mdi-select-multiple" style="font-size: 22px;"></i></th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr>
+                        <td>Khashish</td>
+                        <td>INV0000071</td>
+                        <td>08/4/2019</td>
+                        <td>15,852.00</td>
+                        <td>Bal : 15, 852</td>
+                        <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                        <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                        <td class="text-center">   <input type="checkbox" class="form-check-input" ></td>
+                    </tr>                
+                    <tr>
+                        <td>Khashish</td>
+                        <td>INV0000071</td>
+                        <td>08/4/2019</td>
+                        <td>15,852.00</td>
+                        <td>Bal : 15, 852</td>
+                        <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                        <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                        <td class="text-center">   <input type="checkbox" class="form-check-input" ></td>
+                    </tr>  
+                   
+                    <tr>
+                      <td>Khashish</td>
+                      <td>INV0000071</td>
+                      <td>08/4/2019</td>
+                      <td>15,852.00</td>
+                      <td>Bal : 15, 852</td>
+                      <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                      <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                      <td class="text-center">   <input type="checkbox" class="form-check-input" ></td>
+                    </tr>  
+          
+         
+                    <tr>
+                      <td>Khashish</td>
+                      <td>INV0000071</td>
+                      <td>08/4/2019</td>
+                      <td>15,852.00</td>
+                      <td>Bal : 15, 852</td>
+                      <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                      <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                      <td class="text-center">   <input type="checkbox" class="form-check-input" ></td>
+                    </tr>  
+             </tbody>
+            </table>
+            </div>
+            </div>
+            
+        </div> 
+      </div>
+      <div class="tab-pane" id="CRM-b1">
+        <div class="topSearch">
+          <div class="form">
+          <div class="row align-items-center">
+            <div class="col-lg-3 mt-1">
+              <div class="d-flex gap-3">
+                <label for="example-date" class="form-label "  style="width: 50%;">Start Date</label>
+                <input class="form-control" id="example-date" type="date" name="date">
+            </div>
+            </div>
+            <div class="col-lg-3  mt-1">
+              <div class="d-flex gap-3">
+                <label for="example-date" class="form-label " style="width: 50%;">End Date</label>
+                <input class="form-control" id="example-date" type="date" name="date">
+            </div>
+            </div>
+            <div class="col-lg-1">                      
+              <div class="btn btn-primary">Search</div>
+            </div>
+            <div class="col-lg-2 ms-auto text-end">
+              <button type="button" class="btn btn-light"><i class="uil uil-filter-slash me-1"></i> <span>Clear all</span> </button>
+            </div>
+            
+          </div>                   
+          </div>
+        </div>
+        <div class="table-responsive mt-3">
+          <table class="table table-bordered table-sm mb-0">
+            <thead class="bg-light">
+                <tr>
+                    
+                  <th scope="col">
+                    <span id="masterNo">Master No.</span>
+                    <input id="masterNoSearchInput" type="search" class="form-control form-control-sm"  placeholder="" style="display: none;">
+                
+                  <span class="text-end "> <i id="searchIconNo" class="mdi mdi-filter-outline"></i></span>
+                    </th>
+                    <th scope="col">
+                      <span id="masterName">Master Name</span>
+                      <input id="masterNameSearchInput" type="search" class="form-control form-control-sm"  placeholder="" style="display: none;">
+                      <i id="searchIconName" class="mdi mdi-filter-outline"></i>
+                      </th>
+                    
+                    <th scope="col">Master Date</th>
+                    <th scope="col">Master Amount</th>
+                    <th scope="col">Master Description</th>
+                    <th scope="col"  style="width: 2%;">Message</th>
+                    <th scope="col" style="width: 2%;">CRM</th>
+                    <th scope="col" class="text-center" > <i class="mdi mdi-select-multiple" style="font-size: 22px;"></i></th>
+                </tr>
+            </thead>
+            <tbody >
+                <tr>
+                    <td>Khashish</td>
+                    <td>INV0000071</td>
+                    <td>08/4/2019</td>
+                    <td>15,852.00</td>
+                    <td>Bal : 15, 852</td>
+                    <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                    <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                    <td class="text-center">   <input type="checkbox" class="form-check-input" ></td>
+                </tr>                
+                <tr>
+                    <td>Khashish</td>
+                    <td>INV0000071</td>
+                    <td>08/4/2019</td>
+                    <td>15,852.00</td>
+                    <td>Bal : 15, 852</td>
+                    <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                    <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                    <td class="text-center">   <input type="checkbox" class="form-check-input" ></td>
+                </tr>  
+               
+                <tr>
+                  <td>Khashish</td>
+                  <td>INV0000071</td>
+                  <td>08/4/2019</td>
+                  <td>15,852.00</td>
+                  <td>Bal : 15, 852</td>
+                  <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                  <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                  <td class="text-center">   <input type="checkbox" class="form-check-input" ></td>
+                </tr>  
+      
+     
+                <tr>
+                  <td>Khashish</td>
+                  <td>INV0000071</td>
+                  <td>08/4/2019</td>
+                  <td>15,852.00</td>
+                  <td>Bal : 15, 852</td>
+                  <td class="text-center"><i  class="mdi mdi-email" data-bs-toggle="modal" data-bs-target="#sendMail-modal"></i></td>
+                  <td class="text-center"><i  class="uil uil-users-alt"></i></td>
+                  <td class="text-center">   <input type="checkbox" class="form-check-input" ></td>
+                </tr>  
+         </tbody>
+        </table>
+        </div>
+      </div>
+  </div>
+
+   </div>
+
+
+  </div>

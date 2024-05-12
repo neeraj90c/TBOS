@@ -1,4 +1,5 @@
 ﻿using Application;
+using Application.DTOs.TBOS.Common;
 using Application.DTOs.TBOS.Masters;
 using Application.Features.TBOS.Masters.Branch;
 using Application.Features.TBOS.Masters.Customer;
@@ -60,6 +61,23 @@ namespace WebAPI.Controllers.TBOS.Masters.Customer
 
 
             response = await mediator.Send(new ReadAllCustomerCommand { });
+
+            if (response == null)
+                return Ok(APIResponse<string>.Unauthorized("Please check login credentials"));
+
+            return Ok(response);
+        }
+
+        [HttpPost("ReadAllPaginated")]
+        public async Task<IActionResult> ReadAllPaginated([FromBody]PaginatedDTO paginatedDTO)
+        {
+            CustomerListPaginated response = new CustomerListPaginated();
+
+
+            response = await mediator.Send(new ReadAllCustomerPaginated 
+            {
+                paginatedDTO = paginatedDTO
+            });
 
             if (response == null)
                 return Ok(APIResponse<string>.Unauthorized("Please check login credentials"));

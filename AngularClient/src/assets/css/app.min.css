@@ -556,7 +556,6 @@ progress {
 .container-xxl {
     width: 100%;
     padding-right: var(--bs-gutter-x, 12px);
-    padding-left: var(--bs-gutter-x, 12px);
     margin-right: auto;
     margin-left: auto
 }
@@ -6429,10 +6428,10 @@ fieldset:disabled .btn {
     height: 1em;
     padding: .25em .25em;
     color: #313a46;
-    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23313a46'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+    /* background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23313a46'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat; */
     border: 0;
     border-radius: .25rem;
-    opacity: .65
+    opacity: .65;
 }
 
 .btn-close:hover {
@@ -6532,7 +6531,7 @@ fieldset:disabled .btn {
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    outline: 0
+    outline: 0;
 }
 
 .modal-dialog {
@@ -6642,7 +6641,9 @@ fieldset:disabled .btn {
     padding: 1rem 1rem;
     border-bottom: 1px solid #dee2e6;
     border-top-left-radius: calc(.2rem - 1px);
-    border-top-right-radius: calc(.2rem - 1px)
+    border-top-right-radius: calc(.2rem - 1px);
+    background: #0046d5;
+    color: white;
 }
 
 .modal-header .btn-close {
