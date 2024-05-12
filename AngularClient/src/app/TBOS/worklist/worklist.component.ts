@@ -1,0 +1,10 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-worklist',
+  templateUrl: './worklist.component.html',
+  styleUrls: ['./worklist.component.css']
+})
+export class WorklistComponent {
+
+}

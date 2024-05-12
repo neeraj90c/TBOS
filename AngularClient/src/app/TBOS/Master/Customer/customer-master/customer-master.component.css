@@ -1,0 +1,22 @@
+.fixed-columns th,
+.fixed-columns td:nth-child(1),
+.fixed-columns td:nth-child(2) {
+  position: sticky;
+  left: 0;
+  z-index: 99;
+  background-color: #fff; /* Adjust background color as needed */
+}
+
+.fixed-columns th{
+    background-color: #e1e7fd
+}
+
+.fixed-columns th:not(:nth-child(1)):not(:nth-child(2)),td:not(:nth-child(1)):not(:nth-child(2)) {
+  margin-left: 70px; /* Increase margin for more space */
+  z-index: 0;
+  
+}
+
+td{
+    color: #6c757d;
+}

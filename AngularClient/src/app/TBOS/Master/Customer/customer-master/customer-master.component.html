@@ -1,0 +1,394 @@
+<div class="page-title-box mb-2 d-flex justify-content-between">
+  <div>
+    <h4 class="page-title mt-0">Customer List</h4>
+  </div>
+    
+    <div class="d-flex align-items-center justify-content-end">
+      <div class="menuList border-end" (click)="openCustomerModal()"><i
+          class=" uil uil-plus"></i> Create Customer</div>
+      <div class="menuList border-end"><i class=" uil uil-print"></i> Print</div>
+      <div class="menuList"><i class=" mdi mdi-file-excel-outline"></i> Export To Excel</div>
+    </div>
+</div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="createCustomerModal" tabindex="-1" aria-labelledby="createCustomerModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+      
+        </div>
+      </div>
+    </div>
+
+    <!-- table -->
+    <div class="table-responsive tableHeight">
+      <table class="table table-bordered table-sm mb-0 fixed-columns" style="width: 200vw;">
+        <thead class="bg-light">
+          <tr>
+            <th scope="col" style="width: 1%;">SrNo</th>
+            <th scope="col" style="width: 5%;">
+              <span id="masterName">Customer Name</span>
+              <input id="masterNameSearchInput" type="search" class="form-control form-control-sm" placeholder=""
+                style="display: none;">
+              <i id="searchIconName" class="mdi mdi-filter-outline"></i>
+            </th>
+            <th scope="col" style="width: 5%;">State
+              <i id="searchIconName" class="mdi mdi-filter-outline"></i>
+            </th>
+            <th scope="col" style="width: 2.5%;">(C-S) GST</th>
+            <th scope="col" style="width: 1.5%;">IGST</th>
+            <th scope="col" style="width: 1.5%;">UGST</th>
+            <th scope="col" style="width: 2.5%;">EGST <i class="mdi mdi-filter-outline"></i></th>
+            <th scope="col" style="width: 4%;">GST Tin No.</th>
+            <th scope="col" style="width: 10%;">Address <i id="searchIconName" class="mdi mdi-filter-outline"></i>
+            </th>
+            <th scope="col" style="width: 4%;">City <i id="searchIconName" class="mdi mdi-filter-outline"></i>
+            </th>
+            <th scope="col" style="width: 6%;">Agent Name <i id="searchIconName"
+                class="mdi mdi-filter-outline"></i></th>
+            <th scope="col" style="width: 6%;">Person Name</th>
+            <th scope="col" style="width: 3%;">Transport <i id="searchIconName"
+                class="mdi mdi-filter-outline"></i></th>
+            <th scope="col" style="width: 5%;">Tax Form <i id="searchIconName" class="mdi mdi-filter-outline"></i>
+            </th>
+            <th scope="col" style="width: 5%;">Tin No</th>
+            <th scope="col" style="width: 5%;">Priority</th>
+            <th scope="col" style="width: 5%;">Cr. Amt. Limit</th>
+            <th scope="col" style="width: 6%;">Pan Number</th>
+            <th scope="col" style="width: 2%;">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of customerList;let i = index;">
+            <td>{{customer.rowNo}}</td>
+            <td>{{customer.customerName}}</td>
+            <td>{{customer.state}}</td>
+            <td>{{customer.cgst}}</td>
+            <td>{{customer.igst}}</td>
+            <td>{{customer.utgst}}</td>
+            <td>{{customer.exportGST}}</td>
+            <td>{{customer.gstiN_No}}</td>
+            <td>
+              {{customer.add_line1 + ' '}}
+              {{customer.add_line2 + ' '}}
+              {{customer.add_line3 + ' '}}
+              {{customer.add_line4}}
+            </td>
+            <td>{{customer.city}}</td>
+            <td>{{customer.agentName}}</td>
+            <td>{{customer.personName}}</td>
+            <td>{{customer.transport}}</td>
+            <td>{{customer.taxForm}}</td>
+            <td>{{customer.tin_No}}</td>
+            <td>{{customer.priority}}</td>
+            <td>{{customer.creditAmountLock}}</td>
+            <td>{{customer.panNo}}</td>
+            <td class="text-center action">
+              <i class="uil uil-edit-alt "></i>
+              <i class="mdi mdi-delete-outline "></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <!-- pagination -->
+    <div class="mt-1">
+      <nav class="d-flex justify-content-between">
+        <ul class="mt-1">
+          Page 1 of 20
+        </ul>
+        <ul class="pagination pagination-rounded mb-0 justify-content-end">
+          <li class="page-item">
+            <a class="page-link" href="" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="">1</a></li>
+          <li class="page-item"><a class="page-link" href="">2</a></li>
+          <li class="page-item active"><a class="page-link" href="">3</a></li>
+          <li class="page-item"><a class="page-link" href="">4</a></li>
+          <li class="page-item"><a class="page-link" href="">5</a></li>
+          <li class="page-item">
+            <a class="page-link" href="" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+
+    <ng-template #customerModalTemplate let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="createCustomerModalLabel">Create New Customer</h4>
+        <button type="button" class="btn-close"></button>
+      </div>
+      <div class="modal-body ">
+        <form class="row g-3 " novalidate>
+          <h5 class="formHeader">Customer Details</h5>
+          <div class="col-md-4">
+            <label for="name" >Customer Name</label>
+            <input type="text" class="form-control" id="name" required>
+          </div>
+          <div class="col-md-4">
+            <label for="area" class="form-label">
+              Area/Zone/Branch</label>
+            <input type="text" class="form-control" id="area" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Transport</label>
+            <select class="form-select" id="transport" required>
+              <option selected disabled value="">Choose...</option>
+              <option>A.T.C</option>
+              <option>Amba Mohan</option>
+              <option>Andhra Express</option>
+              <option>A.R.C</option>
+            </select>
+
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Agent Name</label>
+            <select class="form-select" id="transport" required>
+              <option selected disabled value="">Choose...</option>
+              <option>Amit Mehta</option>
+              <option>Amba Mohan</option>
+              <option>Andhra Express</option>
+              <option>A.R.C</option>
+            </select>
+
+          </div>
+          <div class="col-md-4">
+            <label for="area" class="form-label">
+              Payment Terms</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label for="area" class="form-label">
+              Cr. Days Lock</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Pmt. Days</label>
+            <select class="form-select" id="transport" required>
+              <option selected disabled value="">Choose...</option>
+              <option>Sunday</option>
+              <option>Monday</option>
+              <option>Tuesday</option>
+              <option>Wednesday</option>
+            </select>
+
+          </div>
+          <div class="col-md-4">
+            <label for="area" class="form-label">
+              Agent Comm</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label for="area" class="form-label">
+              Tax Form</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label for="area" class="form-label">
+              VAT Tin No</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label for="area" class="form-label">
+              CST Tin No</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label for="area" class="form-label">
+              Pan Number</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Customer Type</label>
+            <select class="form-select" id="transport" required>
+              <option selected disabled value="">Choose...</option>
+              <option>Direct Party</option>
+              <option>Distributor</option>
+            </select>
+
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Default Price</label>
+            <select class="form-select" id="transport" required>
+              <option selected disabled value="">Choose...</option>
+              <option>P1</option>
+              <option>P2</option>
+            </select>
+
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Default Invoice</label>
+            <select class="form-select" id="transport" required>
+              <option selected disabled value="">Choose...</option>
+              <option>Charming</option>
+              <option>Invoice</option>
+            </select>
+
+          </div>
+          <div class="col-md-4">
+            <label for="area" class="form-label">
+              Priority</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label for="area" class="form-label">
+              Credit Amount Lock</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">GST Reverse Charge</label>
+            <select class="form-select" id="transport" required>
+              <option selected disabled value="">Choose...</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+
+          </div>
+
+          <h5 class="formHeader">Address Details</h5>
+          <div class="col-md-4">
+            <label class="form-label">Detail</label>
+            <select class="form-select" id="transport" required>
+              <option selected disabled value="">Choose...</option>
+              <option>Billing Address</option>
+              <option>Delivery Address</option>
+              <option>Office Address</option>
+            </select>
+
+          </div>
+          <div class="col-md-4">
+            <label for="name" class="form-label">Line 1</label>
+            <input type="text" class="form-control" id="name" required>
+          </div>
+          <div class="col-md-4">
+            <label for="area" class="form-label">
+              Line 2</label>
+            <input type="text" class="form-control" id="area" required>
+          </div>
+          <div class="col-md-4">
+            <label for="name" class="form-label">Line 3</label>
+            <input type="text" class="form-control" id="name" required>
+          </div>
+          <div class="col-md-4">
+            <label for="area" class="form-label">
+              Line 4</label>
+            <input type="text" class="form-control" id="area" required>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Country</label>
+            <select class="form-select" id="transport" required>
+              <option selected disabled value="">Choose...</option>
+              <option>ABC</option>
+              <option>PQY</option>
+            </select>
+
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">State</label>
+            <select class="form-select" id="transport" required>
+              <option selected disabled value="">Choose...</option>
+              <option>ABC</option>
+              <option>PQY</option>
+            </select>
+
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">City</label>
+            <select class="form-select" id="transport" required>
+              <option selected disabled value="">Choose...</option>
+              <option>ABC</option>
+              <option>PQY</option>
+            </select>
+
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">
+              Pin</label>
+            <input type="text" class="form-control" required>
+          </div>
+
+          <h5 class="formHeader">Contact Details</h5>
+          <div class="col-md-4">
+            <label class="form-label">
+              Name</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">
+              Designation</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">
+              Phone Number</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">
+              Mobile Number</label>
+            <input type="text" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">
+              Email Id</label>
+            <input type="email" class="form-control" required>
+          </div>
+          <h5 class="formHeader">GST Applicable</h5>
+          <div class="d-flex justify-content-between">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="GSTRadio" id="cGST">
+              <label class="form-check-label" for="cGST">
+                CGST
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="GSTRadio" id="SGST" checked>
+              <label class="form-check-label" for="SGST">
+                SGST
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="GSTRadio" id="IGST" checked>
+              <label class="form-check-label" for="IGST">
+                IGST
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="GSTRadio" id="UTGST" checked>
+              <label class="form-check-label" for="UTGST">
+                UTGST
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="GSTRadio" id="EGST" checked>
+              <label class="form-check-label" for="EGST">
+                EGST
+              </label>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">
+              GST Number </label>
+            <input type="email" class="form-control" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer border-0">
+        <div class="col-12 text-center">
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+      </div>
+    </ng-template>
+
+
+
+    
