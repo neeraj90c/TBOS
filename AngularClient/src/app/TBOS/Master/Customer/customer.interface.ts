@@ -4,7 +4,7 @@ export interface CustomerMasterDTO {
     customerId: number;
     customerCode: string;
     customerName: string;
-    transport: string;
+    transportId: number;
     agentId?: number;
     paymentTerm?: number;
     branchId?: number;
@@ -41,7 +41,7 @@ export interface CustomerMasterDTOPaginated extends PaginatedDTO {
     customerId: number;
     customerCode: string;
     customerName: string;
-    transport: string;
+    transportId: number;
     agentId?: number;
     paymentTerm?: number;
     branchId?: number;
@@ -97,7 +97,7 @@ export interface CustomerMasterDTOPaginated extends PaginatedDTO {
 
 export interface CreateCustomer {
     customerName: string;
-    transport: string;
+    transportId: number;
     agentId?: number;
     paymentTerm: number;
     branchId: number;
@@ -129,7 +129,7 @@ export interface CreateCustomer {
 export interface UpdateCustomer {
     customerId: number;
     customerName: string;
-    transport: string;
+    transportId: number;
     agentId: number;
     paymentTerm: number;
     branchId: number;

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CustomerList, CustomerListPaginated } from './customer.interface';
-import { getAllCustomers, getAllCustomersPaginated } from '../../GlobalVariables';
+import { getAllCustomers, getAllCustomersPaginated } from '../../../GlobalVariables';
 import { PaginatedDTO } from '../../common.interface';
 
 @Injectable({

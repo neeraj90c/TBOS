@@ -18,16 +18,19 @@
                 <h4 class="mt-0">Log In</h4>
                 <p class=" mb-4">Enter your email address and password to access account.</p>
 
+                <div *ngIf="loginError !== null" class="alert alert-danger" role="alert">
+                    {{loginError}}.
+                </div>
                 <!-- form -->
-                <form action="#">
+                <form [formGroup]="LoginForm" (ngSubmit)="loginUser()">
                     <div class="mb-3">
-                        <label for="emailaddress" class="form-label">Email address</label>
-                        <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email">
+                        <label for="Username" class="form-label">Username</label>
+                        <input class="form-control" type="email" id="Username" required="" placeholder="Enter your Username" formControlName="userName">
                     </div>
                     <div class="mb-3">
                         <a href="forgotPass.html" class=" float-end"><small>Forgot your password?</small></a>
                         <label for="password" class="form-label">Password</label>
-                        <input class="form-control" type="password" required="" id="password" placeholder="Enter your password">
+                        <input class="form-control" type="password" required="" id="password" placeholder="Enter your password" formControlName="password">
                     </div>
                     
                     <div class="d-grid mb-0 text-center">
@@ -58,3 +61,5 @@
     </div>
     <!-- end Auth fluid right content -->
 </div>
+
+<app-loader></app-loader>

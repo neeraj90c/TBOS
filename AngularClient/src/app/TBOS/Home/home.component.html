@@ -15,6 +15,36 @@
     <div class="h-100" id="leftside-menu-container" data-simplebar="">
       <!--- Sidemenu -->
       <ul class="side-nav">
+        <li class="side-nav-item" *ngFor="let menu of parentMenu">
+          <a data-bs-toggle="collapse" [href]="'#'+menu.subRoleCode" aria-expanded="false" [attr.aria-controls]="menu.subRoleCode" class="side-nav-link">
+            <i [class]="menu.menuIconUrl"></i>
+            <span> {{menu.subRoleName}}</span>
+            <span class="menu-arrow"></span>
+          </a>
+
+          <div class="collapse" [id]="menu.subRoleCode">
+            <ul class="side-nav-second-level">
+                <li class="side-nav-item" *ngFor="let child of menu.childMenuList" [routerLink]="child.subRoleCode">
+                    <a data-bs-toggle="collapse" [href]="'#'+child.subRoleCode" aria-expanded="false" [attr.aria-controls]="child.subRoleCode" class="collapsed">
+                        <span> {{child.subRoleName}} </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" [id]="child.subRoleCode">
+                        <ul class="side-nav-third-level ms-2">
+                            <li *ngFor="let subchild of child.childMenuList">
+                                <a >{{subchild.subRoleName}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+               
+            </ul>
+        </div>
+        </li>
+      </ul>
+
+<!-- 
+      <ul class="side-nav">
         <li class="side-nav-item">
           <a class="side-nav-link" href="index.html" title="Home">
             <i class="uil-home-alt"></i>
@@ -54,7 +84,7 @@
               <span> Master </span>
               <span class="menu-arrow"></span>
           </a>
-          <div class="collapse" id="sidebarMultiLevel" style="">
+          <div class="collapse" id="sidebarMultiLevel" >
               <ul class="side-nav-second-level">
                   <li class="side-nav-item">
                       <a data-bs-toggle="collapse" href="#supplierNav" aria-expanded="false" aria-controls="supplierNav" class="collapsed">
@@ -98,7 +128,7 @@
             <span> Settings </span>
           </a>
         </li>
-      </ul>
+      </ul> -->
 
       <div class="clearfix"></div>
     </div>
@@ -191,7 +221,7 @@
 
               <!-- item-->
               <a
-                href="javascript:void(0);"
+                (click)="Logout()"
                 class="dropdown-item notify-item"
               >
                 <i class="mdi mdi-logout me-1"></i>

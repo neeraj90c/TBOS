@@ -13,7 +13,7 @@ namespace Application.DTOs.TBOS.Masters
         public int CustomerId { get; set; }
         public string CustomerCode { get; set; }
         public string CustomerName { get; set; }
-        public string Transport { get; set; }
+        public int TransportId { get; set; }
         public int? AgentId { get; set; }
         public int? PaymentTerm { get; set; }
         public int? BranchId { get; set; }
@@ -52,7 +52,7 @@ namespace Application.DTOs.TBOS.Masters
         public int CustomerId { get; set; }
         public string CustomerCode { get; set; }
         public string CustomerName { get; set; }
-        public string Transport { get; set; }
+        public int TransportId { get; set; }
         public int? AgentId { get; set; }
         public int? PaymentTerm { get; set; }
         public int? BranchId { get; set; }
@@ -110,7 +110,7 @@ namespace Application.DTOs.TBOS.Masters
     public class CreateCustomer
     {
         public string CustomerName { get; set; }
-        public string Transport { get; set; }
+        public int TransportId { get; set; }
         public int? AgentId { get; set; }
         public int PaymentTerm { get; set; }
         public int BranchId { get; set; }
@@ -143,7 +143,7 @@ namespace Application.DTOs.TBOS.Masters
     {
         public int CustomerId { get; set; }
         public string CustomerName { get; set; }
-        public string Transport { get; set; }
+        public int TransportId { get; set; }
         public int AgentId { get; set; }
         public int PaymentTerm { get; set; }
         public int BranchId { get; set; }
