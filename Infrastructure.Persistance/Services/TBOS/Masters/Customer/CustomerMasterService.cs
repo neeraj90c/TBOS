@@ -47,7 +47,7 @@ namespace Infrastructure.Persistance.Services.TBOS.Masters.Customer
                     response = await connection.QuerySingleAsync<CustomerMasterDTO>(SP_CustomerMaster_Insert, new
                     {
                         CustomerName = createCustomer.CustomerName,
-                        Transport = createCustomer.Transport,
+                        TransportId = createCustomer.TransportId,
                         AgentId = createCustomer.AgentId,
                         PaymentTerm = createCustomer.PaymentTerm,
                         BranchId = createCustomer.BranchId,
@@ -98,7 +98,7 @@ namespace Infrastructure.Persistance.Services.TBOS.Masters.Customer
                     {
                         CustomerId = updateCustomer.CustomerId,
                         CustomerName = updateCustomer.CustomerName,
-                        Transport = updateCustomer.Transport,
+                        TransportId = updateCustomer.TransportId,
                         AgentId = updateCustomer.AgentId,
                         PaymentTerm = updateCustomer.PaymentTerm,
                         BranchId = updateCustomer.BranchId,

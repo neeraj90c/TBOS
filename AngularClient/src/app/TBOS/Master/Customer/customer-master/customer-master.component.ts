@@ -3,7 +3,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { PaginatedDTO } from 'src/app/TBOS/common.interface';
 import { CustomerMasterDTOPaginated } from '../customer.interface';
 import { CustomerService } from '../customer.service';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-customer-master',
@@ -21,8 +21,18 @@ export class CustomerMasterComponent implements OnInit {
   customerList: CustomerMasterDTOPaginated[] = []
   customerModal!: NgbModalRef
   customerForm = new FormGroup({
+    customerName : new FormControl('',[Validators.required]),
+    customerBranch : new FormControl(''),
+    transport : new FormControl(),
     
   })
+
+  // customerName: string;
+  // transport: string;
+  // agentId?: number;
+  // paymentTerm?: number;
+  // branchId?: number;
+  // customerBranch: string;
 
   @ViewChild('customerModalTemplate') customerModalContent!: ElementRef
 
