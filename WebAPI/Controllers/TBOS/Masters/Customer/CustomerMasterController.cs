@@ -85,7 +85,7 @@ namespace WebAPI.Controllers.TBOS.Masters.Customer
             return Ok(response);
         }
 
-        [HttpGet("ReadByCustomerId/{CustomerId}")]
+        [HttpGet("ReadById/{CustomerId}")]
         public async Task<IActionResult> ReadByCustomerId(int CustomerId)
         {
             CustomerMasterDTO response = new CustomerMasterDTO();

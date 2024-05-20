@@ -104,6 +104,7 @@ namespace Application.DTOs.TBOS.Masters
         public string? EmailId { get; set; }
         public int? ContactStatus { get; set; }
         public string? AgentName {  get; set; }
+        public string? TransportName {  get; set; }
     }
 
 

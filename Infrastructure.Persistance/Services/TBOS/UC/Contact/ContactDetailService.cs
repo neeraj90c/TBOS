@@ -1,0 +1,12 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Infrastructure.Persistance.Services.TBOS.UC.Contact
+{
+    internal class ContactDetailService
+    {
+    }
+}

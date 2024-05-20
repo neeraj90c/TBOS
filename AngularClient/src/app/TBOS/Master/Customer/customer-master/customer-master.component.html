@@ -70,15 +70,15 @@
             <td>{{customer.exportGST}}</td>
             <td>{{customer.gstiN_No}}</td>
             <td>
-              {{customer.add_line1 + ' '}}
-              {{customer.add_line2 + ' '}}
-              {{customer.add_line3 + ' '}}
+              {{customer.add_line1 }}
+              {{customer.add_line2 }}
+              {{customer.add_line3 }}
               {{customer.add_line4}}
             </td>
             <td>{{customer.city}}</td>
             <td>{{customer.agentName}}</td>
             <td>{{customer.personName}}</td>
-            <td>{{customer.transportId}}</td>
+            <td>{{customer.transportName}}</td>
             <td>{{customer.taxForm}}</td>
             <td>{{customer.tin_No}}</td>
             <td>{{customer.priority}}</td>
@@ -124,55 +124,49 @@
     <ng-template #customerModalTemplate let-modal>
       <div class="modal-header">
         <h4 class="modal-title" id="createCustomerModalLabel">Create New Customer</h4>
-        <button type="button" class="btn-close"></button>
+        <button type="button" class="btn-close" (click)="customerModal.close()"></button>
       </div>
       <div class="modal-body ">
-        <form class="row g-3 " novalidate>
+        <form class="row g-3 " [formGroup]="customerForm">
           <h5 class="formHeader">Customer Details</h5>
           <div class="col-md-4">
             <label for="name" >Customer Name</label>
-            <input type="text" class="form-control" id="name" required>
+            <input type="text" class="form-control" id="name" formControlName="customerName">
           </div>
           <div class="col-md-4">
             <label for="area" class="form-label">
               Area/Zone/Branch</label>
-            <input type="text" class="form-control" id="area" required>
+            <input type="text" class="form-control" id="area" formControlName="customerBranch">
           </div>
           <div class="col-md-4">
             <label class="form-label">Transport</label>
-            <select class="form-select" id="transport" required>
+            <select class="form-select" formControlName="transportId">
               <option selected disabled value="">Choose...</option>
-              <option>A.T.C</option>
-              <option>Amba Mohan</option>
-              <option>Andhra Express</option>
-              <option>A.R.C</option>
+              <option *ngFor="let transport of transportList" [value]="transport.transportId">{{transport.transportName}}</option>
             </select>
 
           </div>
           <div class="col-md-4">
             <label class="form-label">Agent Name</label>
-            <select class="form-select" id="transport" required>
+            <select class="form-select" formControlName="agentId">
               <option selected disabled value="">Choose...</option>
-              <option>Amit Mehta</option>
-              <option>Amba Mohan</option>
-              <option>Andhra Express</option>
-              <option>A.R.C</option>
+              <option *ngFor=" let agent of agentList" [value]="agent.agentId">{{agent.agentName}}</option>
             </select>
 
           </div>
           <div class="col-md-4">
             <label for="area" class="form-label">
               Payment Terms</label>
-            <input type="text" class="form-control" required>
+            <input type="text" class="form-control" formControlName="paymentTerm">
           </div>
           <div class="col-md-4">
             <label for="area" class="form-label">
               Cr. Days Lock</label>
-            <input type="text" class="form-control" required>
+            <input type="text" class="form-control" formControlName="creditDaysLock">
           </div>
           <div class="col-md-4">
             <label class="form-label">Pmt. Days</label>
-            <select class="form-select" id="transport" required>
+            <select class="form-select"  formControlName="paymentDay">
               <option selected disabled value="">Choose...</option>
               <option>Sunday</option>
               <option>Monday</option>
@@ -184,31 +178,31 @@
           <div class="col-md-4">
             <label for="area" class="form-label">
               Agent Comm</label>
-            <input type="text" class="form-control" required>
+            <input type="text" class="form-control" formControlName="agentCommission">
           </div>
           <div class="col-md-4">
             <label for="area" class="form-label">
               Tax Form</label>
-            <input type="text" class="form-control" required>
+            <input type="text" class="form-control" formControlName="taxForm">
           </div>
           <div class="col-md-4">
             <label for="area" class="form-label">
               VAT Tin No</label>
-            <input type="text" class="form-control" required>
+            <input type="text" class="form-control" formControlName="tin_No">
           </div>
           <div class="col-md-4">
             <label for="area" class="form-label">
               CST Tin No</label>
-            <input type="text" class="form-control" required>
+            <input type="text" class="form-control" formControlName="cstTinNo">
           </div>
           <div class="col-md-4">
             <label for="area" class="form-label">
               Pan Number</label>
-            <input type="text" class="form-control" required>
+            <input type="text" class="form-control" formControlName="panNo">
           </div>
           <div class="col-md-4">
             <label class="form-label">Customer Type</label>
-            <select class="form-select" id="transport" required>
+            <select class="form-select" formControlName="customerType">
               <option selected disabled value="">Choose...</option>
               <option>Direct Party</option>
               <option>Distributor</option>
@@ -217,7 +211,7 @@
           </div>
           <div class="col-md-4">
             <label class="form-label">Default Price</label>
-            <select class="form-select" id="transport" required>
+            <select class="form-select"  formControlName="defaultPrice">
               <option selected disabled value="">Choose...</option>
               <option>P1</option>
               <option>P2</option>
@@ -226,7 +220,7 @@
           </div>
           <div class="col-md-4">
             <label class="form-label">Default Invoice</label>
-            <select class="form-select" id="transport" required>
+            <select class="form-select"  formControlName="defaultInvoice">
               <option selected disabled value="">Choose...</option>
               <option>Charming</option>
               <option>Invoice</option>
@@ -236,16 +230,16 @@
           <div class="col-md-4">
             <label for="area" class="form-label">
               Priority</label>
-            <input type="text" class="form-control" required>
+            <input type="text" class="form-control" formControlName="priority">
           </div>
           <div class="col-md-4">
             <label for="area" class="form-label">
               Credit Amount Lock</label>
-            <input type="text" class="form-control" required>
+            <input type="text" class="form-control" formControlName="creditAmountLock">
           </div>
           <div class="col-md-4">
             <label class="form-label">GST Reverse Charge</label>
-            <select class="form-select" id="transport" required>
+            <select class="form-select"  formControlName="gSTReverseCharge">
               <option selected disabled value="">Choose...</option>
               <option>Yes</option>
               <option>No</option>
@@ -256,7 +250,7 @@
           <h5 class="formHeader">Address Details</h5>
           <div class="col-md-4">
             <label class="form-label">Detail</label>
-            <select class="form-select" id="transport" required>
+            <select class="form-select"  required>
               <option selected disabled value="">Choose...</option>
               <option>Billing Address</option>
               <option>Delivery Address</option>
@@ -285,7 +279,7 @@
 
           <div class="col-md-4">
             <label class="form-label">Country</label>
-            <select class="form-select" id="transport" required>
+            <select class="form-select"  required>
               <option selected disabled value="">Choose...</option>
               <option>ABC</option>
               <option>PQY</option>
@@ -294,7 +288,7 @@
           </div>
           <div class="col-md-4">
             <label class="form-label">State</label>
-            <select class="form-select" id="transport" required>
+            <select class="form-select"  required>
               <option selected disabled value="">Choose...</option>
               <option>ABC</option>
               <option>PQY</option>
@@ -303,7 +297,7 @@
           </div>
           <div class="col-md-4">
             <label class="form-label">City</label>
-            <select class="form-select" id="transport" required>
+            <select class="form-select"  required>
               <option selected disabled value="">Choose...</option>
               <option>ABC</option>
               <option>PQY</option>

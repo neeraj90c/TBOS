@@ -6,14 +6,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LoaderComponent } from './loader/loader.component';
 
-
-
 @NgModule({
   declarations: [
     LoaderComponent
-
   ],
-
   imports: [
     CommonModule,
     FormsModule,
@@ -22,7 +18,8 @@ import { LoaderComponent } from './loader/loader.component';
     HttpClientModule,
     NgbModule
   ],
-  exports:[
+  exports: [
+    CommonModule,
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
