@@ -9,6 +9,7 @@ using Application.Interfaces.TBOS.Masters.Agent;
 using Application.Interfaces.TBOS.Masters.Branch;
 using Application.Interfaces.TBOS.Masters.Customer;
 using Application.Interfaces.TBOS.Masters.Transport;
+using Application.Interfaces.TBOS.UC;
 using Application.Interfaces.User;
 using Infrastructure.Persistance.Services;
 using Infrastructure.Persistance.Services.Admin;
@@ -20,6 +21,7 @@ using Infrastructure.Persistance.Services.TBOS.Masters.Agent;
 using Infrastructure.Persistance.Services.TBOS.Masters.Branch;
 using Infrastructure.Persistance.Services.TBOS.Masters.Customer;
 using Infrastructure.Persistance.Services.TBOS.Masters.Transport;
+using Infrastructure.Persistance.Services.TBOS.UC.Contact;
 using Infrastructure.Persistance.Services.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -87,6 +89,7 @@ namespace WebAPI
             services.AddTransient<ICustomerMaster, CustomerMasterService>();
             services.AddTransient<ITransportMaster, TransportMasterService>();
             services.AddTransient<IAgentMaster, AgentMasterService>();
+            services.AddTransient<IContactDetails, ContactDetailService>();
 
 
 
