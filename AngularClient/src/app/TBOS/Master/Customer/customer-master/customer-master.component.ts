@@ -8,6 +8,7 @@ import { CustomerMasterDTOPaginated } from '../customer.interface';
 import { CustomerService } from '../customer.service';
 import { TransportMasterService } from '../../Transport/transport-master.service';
 import { TransportMaster } from '../../Transport/transport.interface';
+import { AddressDetailService } from 'src/app/TBOS/UC/Address/address-detail.service';
 
 @Component({
   selector: 'app-customer-master',
@@ -21,6 +22,7 @@ export class CustomerMasterComponent implements OnInit {
     private customerService: CustomerService,
     private agentMasterService: AgentMasterService,
     private transportMasterService: TransportMasterService,
+    private addressService:AddressDetailService,
     private modalService: NgbModal
   ) { }
 
@@ -61,6 +63,26 @@ export class CustomerMasterComponent implements OnInit {
     actionUser: new FormControl(0)
   });
 
+  addressForm = new FormGroup({
+    detailId: new FormControl(0),
+    masterCode: new FormControl(''),
+    addressType: new FormControl(''),
+    add_line1: new FormControl(''),
+    add_line2: new FormControl(''),
+    add_line3: new FormControl(''),
+    add_line4: new FormControl(''),
+    city: new FormControl(''),    
+    state: new FormControl(''),
+    country: new FormControl(''),
+    pincode: new FormControl(''),
+    status: new FormControl(0)
+  })
+
+  mainForm = new FormGroup({
+    customerDetail: this.customerForm,
+    addressDetail: this.addressForm
+  });
+
   @ViewChild('customerModalTemplate') customerModalContent!: ElementRef
 
   ngOnInit(): void {
@@ -77,10 +99,18 @@ export class CustomerMasterComponent implements OnInit {
     this.transportMasterService.ReadAllTransports().subscribe(res=>{
       this.transportList = res.items
     })
+    this.addressService.ReadAllAddress().subscribe(res=>{
+      console.log(res);
+      
+    })
   }
 
   openCustomerModal() {
     this.customerModal = this.modalService.open(this.customerModalContent, { size: 'xl' })
+  }
+  formSubmit(){
+    console.log(this.mainForm.value);
+    
   }
 
 }

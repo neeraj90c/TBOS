@@ -21,6 +21,7 @@ using Infrastructure.Persistance.Services.TBOS.Masters.Agent;
 using Infrastructure.Persistance.Services.TBOS.Masters.Branch;
 using Infrastructure.Persistance.Services.TBOS.Masters.Customer;
 using Infrastructure.Persistance.Services.TBOS.Masters.Transport;
+using Infrastructure.Persistance.Services.TBOS.UC.Address;
 using Infrastructure.Persistance.Services.TBOS.UC.Contact;
 using Infrastructure.Persistance.Services.User;
 using Microsoft.AspNetCore.Authorization;
@@ -84,14 +85,13 @@ namespace WebAPI
             services.AddTransient<ILeadActivity, LeadActivityService>();
             services.AddTransient<IDaybook, DaybookService>();
 
-            //TBOS BRANCH MASTER
+            //TBOS MASTER, UC
             services.AddTransient<IBranchMaster, BranchMasterService>();
             services.AddTransient<ICustomerMaster, CustomerMasterService>();
             services.AddTransient<ITransportMaster, TransportMasterService>();
             services.AddTransient<IAgentMaster, AgentMasterService>();
             services.AddTransient<IContactDetails, ContactDetailService>();
-
-
+            services.AddTransient<IAddressDetails, AddressDetailService>();
 
 
             //For Directory Browsing, comment out for Prod Release

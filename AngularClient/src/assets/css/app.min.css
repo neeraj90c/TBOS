@@ -2575,7 +2575,7 @@ progress {
 }
 
 .form-control-sm {
-    min-height: calc(1.5em + (.56rem + 2px));
+    height: 20px;
     padding: .28rem .8rem;
     font-size: .875rem;
     border-radius: .2rem

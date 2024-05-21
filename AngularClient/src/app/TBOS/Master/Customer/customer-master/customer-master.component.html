@@ -5,7 +5,7 @@
     
     <div class="d-flex align-items-center justify-content-end">
       <div class="menuList border-end" (click)="openCustomerModal()"><i
-          class=" uil uil-plus"></i> Create Customer</div>
+          class="fa fa-user-plus"></i> Create Customer</div>
       <div class="menuList border-end"><i class=" uil uil-print"></i> Print</div>
       <div class="menuList"><i class=" mdi mdi-file-excel-outline"></i> Export To Excel</div>
     </div>
@@ -127,214 +127,234 @@
         <button type="button" class="btn-close" (click)="customerModal.close()"></button>
       </div>
       <div class="modal-body ">
-        <form class="row g-3 " [formGroup]="customerForm">
-          <h5 class="formHeader">Customer Details</h5>
-          <div class="col-md-4">
-            <label for="name" >Customer Name</label>
-            <input type="text" class="form-control" id="name" formControlName="customerName">
+        <form class="row g-3 " [formGroup]="mainForm" (ngSubmit)="formSubmit()">
+          <div  class="row g-3 " formGroupName="customerDetail">
+            <h5 class="formHeader">Customer Details</h5>
+            <div class="col-md-4">
+              <label for="name" >Customer Name</label>
+              <input type="text" class="form-control form-control-sm" id="name" formControlName="customerName">
+            </div>
+            <div class="col-md-4">
+              <label for="area" class="form-label">
+                Area/Zone/Branch</label>
+              <input type="text" class="form-control form-control-sm" id="area" formControlName="customerBranch">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Transport</label>
+              <select class="form-select form-select-sm" formControlName="transportId">
+                <option selected disabled value="">Choose...</option>
+                <option *ngFor="let transport of transportList" [value]="transport.transportId">{{transport.transportName}}</option>
+              </select>
+  
+            </div>
+            <div class="col-md-4 mt-1">
+              <label class="form-label">Agent Name</label>
+              <select class="form-select form-select-sm" formControlName="agentId">
+                <option selected disabled value="">Choose...</option>
+                <option *ngFor=" let agent of agentList" [value]="agent.agentId">{{agent.agentName}}</option>
+              </select>
+  
+            </div>
+            <div class="col-md-4 mt-1">
+              <label for="area" class="form-label">
+                Payment Terms</label>
+              <input type="text" class="form-control form-control-sm" formControlName="paymentTerm">
+            </div>
+            <div class="col-md-4 mt-1">
+              <label for="area" class="form-label">
+                Cr. Days Lock</label>
+              <input type="text" class="form-control form-control-sm" formControlName="creditDaysLock">
+            </div>
+            <div class="col-md-4 mt-1">
+              <label class="form-label">Pmt. Days</label>
+              <select class="form-select form-select-sm"  formControlName="paymentDay">
+                <option selected disabled value="">Choose...</option>
+                <option>Sunday</option>
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+              </select>
+  
+            </div>
+            <div class="col-md-4 mt-1">
+              <label for="area" class="form-label">
+                Agent Comm</label>
+              <input type="text" class="form-control form-control-sm" formControlName="agentCommission">
+            </div>
+            <div class="col-md-4 mt-1">
+              <label for="area" class="form-label">
+                Tax Form</label>
+              <input type="text" class="form-control form-control-sm" formControlName="taxForm">
+            </div>
+            <div class="col-md-4 mt-1">
+              <label for="area" class="form-label">
+                VAT Tin No</label>
+              <input type="text" class="form-control form-control-sm" formControlName="tin_No">
+            </div>
+            <div class="col-md-4 mt-1">
+              <label for="area" class="form-label">
+                CST Tin No</label>
+              <input type="text" class="form-control form-control-sm" formControlName="cstTinNo">
+            </div>
+            <div class="col-md-4 mt-1">
+              <label for="area" class="form-label">
+                Pan Number</label>
+              <input type="text" class="form-control form-control-sm" formControlName="panNo">
+            </div>
+            <div class="col-md-4 mt-1">
+              <label class="form-label">Customer Type</label>
+              <select class="form-select form-select-sm" formControlName="customerType">
+                <option selected disabled value="">Choose...</option>
+                <option>Direct Party</option>
+                <option>Distributor</option>
+              </select>
+  
+            </div>
+            <div class="col-md-4 mt-1">
+              <label class="form-label">Default Price</label>
+              <select class="form-select form-select-sm"  formControlName="defaultPrice">
+                <option selected disabled value="">Choose...</option>
+                <option>P1</option>
+                <option>P2</option>
+              </select>
+  
+            </div>
+            <div class="col-md-4 mt-1">
+              <label class="form-label">Default Invoice</label>
+              <select class="form-select form-select-sm"  formControlName="defaultInvoice">
+                <option selected disabled value="">Choose...</option>
+                <option>Charming</option>
+                <option>Invoice</option>
+              </select>
+  
+            </div>
+            <div class="col-md-4 mt-1">
+              <label for="area" class="form-label">
+                Priority</label>
+              <input type="text" class="form-control form-control-sm" formControlName="priority">
+            </div>
+            <div class="col-md-4 mt-1">
+              <label for="area" class="form-label">
+                Credit Amount Lock</label>
+              <input type="text" class="form-control form-control-sm" formControlName="creditAmountLock">
+            </div>
+            <div class="col-md-4 mt-1">
+              <label class="form-label">GST Reverse Charge</label>
+              <select class="form-select form-select-sm"  formControlName="gSTReverseCharge">
+                <option selected disabled value="">Choose...</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+  
+            </div>
           </div>
-          <div class="col-md-4">
-            <label for="area" class="form-label">
-              Area/Zone/Branch</label>
-            <input type="text" class="form-control" id="area" formControlName="customerBranch">
-          </div>
-          <div class="col-md-4">
-            <label class="form-label">Transport</label>
-            <select class="form-select" formControlName="transportId">
-              <option selected disabled value="">Choose...</option>
-              <option *ngFor="let transport of transportList" [value]="transport.transportId">{{transport.transportName}}</option>
-            </select>
-
-          </div>
-          <div class="col-md-4">
-            <label class="form-label">Agent Name</label>
-            <select class="form-select" formControlName="agentId">
-              <option selected disabled value="">Choose...</option>
-              <option *ngFor=" let agent of agentList" [value]="agent.agentId">{{agent.agentName}}</option>
-            </select>
-
-          </div>
-          <div class="col-md-4">
-            <label for="area" class="form-label">
-              Payment Terms</label>
-            <input type="text" class="form-control" formControlName="paymentTerm">
-          </div>
-          <div class="col-md-4">
-            <label for="area" class="form-label">
-              Cr. Days Lock</label>
-            <input type="text" class="form-control" formControlName="creditDaysLock">
-          </div>
-          <div class="col-md-4">
-            <label class="form-label">Pmt. Days</label>
-            <select class="form-select"  formControlName="paymentDay">
-              <option selected disabled value="">Choose...</option>
-              <option>Sunday</option>
-              <option>Monday</option>
-              <option>Tuesday</option>
-              <option>Wednesday</option>
-            </select>
-
-          </div>
-          <div class="col-md-4">
-            <label for="area" class="form-label">
-              Agent Comm</label>
-            <input type="text" class="form-control" formControlName="agentCommission">
-          </div>
-          <div class="col-md-4">
-            <label for="area" class="form-label">
-              Tax Form</label>
-            <input type="text" class="form-control" formControlName="taxForm">
-          </div>
-          <div class="col-md-4">
-            <label for="area" class="form-label">
-              VAT Tin No</label>
-            <input type="text" class="form-control" formControlName="tin_No">
-          </div>
-          <div class="col-md-4">
-            <label for="area" class="form-label">
-              CST Tin No</label>
-            <input type="text" class="form-control" formControlName="cstTinNo">
-          </div>
-          <div class="col-md-4">
-            <label for="area" class="form-label">
-              Pan Number</label>
-            <input type="text" class="form-control" formControlName="panNo">
-          </div>
-          <div class="col-md-4">
-            <label class="form-label">Customer Type</label>
-            <select class="form-select" formControlName="customerType">
-              <option selected disabled value="">Choose...</option>
-              <option>Direct Party</option>
-              <option>Distributor</option>
-            </select>
-
-          </div>
-          <div class="col-md-4">
-            <label class="form-label">Default Price</label>
-            <select class="form-select"  formControlName="defaultPrice">
-              <option selected disabled value="">Choose...</option>
-              <option>P1</option>
-              <option>P2</option>
-            </select>
-
-          </div>
-          <div class="col-md-4">
-            <label class="form-label">Default Invoice</label>
-            <select class="form-select"  formControlName="defaultInvoice">
-              <option selected disabled value="">Choose...</option>
-              <option>Charming</option>
-              <option>Invoice</option>
-            </select>
-
-          </div>
-          <div class="col-md-4">
-            <label for="area" class="form-label">
-              Priority</label>
-            <input type="text" class="form-control" formControlName="priority">
-          </div>
-          <div class="col-md-4">
-            <label for="area" class="form-label">
-              Credit Amount Lock</label>
-            <input type="text" class="form-control" formControlName="creditAmountLock">
-          </div>
-          <div class="col-md-4">
-            <label class="form-label">GST Reverse Charge</label>
-            <select class="form-select"  formControlName="gSTReverseCharge">
-              <option selected disabled value="">Choose...</option>
-              <option>Yes</option>
-              <option>No</option>
-            </select>
-
-          </div>
-
-          <h5 class="formHeader">Address Details</h5>
-          <div class="col-md-4">
-            <label class="form-label">Detail</label>
-            <select class="form-select"  required>
-              <option selected disabled value="">Choose...</option>
-              <option>Billing Address</option>
-              <option>Delivery Address</option>
-              <option>Office Address</option>
-            </select>
-
-          </div>
-          <div class="col-md-4">
-            <label for="name" class="form-label">Line 1</label>
-            <input type="text" class="form-control" id="name" required>
-          </div>
-          <div class="col-md-4">
-            <label for="area" class="form-label">
-              Line 2</label>
-            <input type="text" class="form-control" id="area" required>
-          </div>
-          <div class="col-md-4">
-            <label for="name" class="form-label">Line 3</label>
-            <input type="text" class="form-control" id="name" required>
-          </div>
-          <div class="col-md-4">
-            <label for="area" class="form-label">
-              Line 4</label>
-            <input type="text" class="form-control" id="area" required>
-          </div>
-
-          <div class="col-md-4">
-            <label class="form-label">Country</label>
-            <select class="form-select"  required>
-              <option selected disabled value="">Choose...</option>
-              <option>ABC</option>
-              <option>PQY</option>
-            </select>
-
-          </div>
-          <div class="col-md-4">
-            <label class="form-label">State</label>
-            <select class="form-select"  required>
-              <option selected disabled value="">Choose...</option>
-              <option>ABC</option>
-              <option>PQY</option>
-            </select>
-
-          </div>
-          <div class="col-md-4">
-            <label class="form-label">City</label>
-            <select class="form-select"  required>
-              <option selected disabled value="">Choose...</option>
-              <option>ABC</option>
-              <option>PQY</option>
-            </select>
-
-          </div>
-          <div class="col-md-4">
-            <label class="form-label">
-              Pin</label>
-            <input type="text" class="form-control" required>
+          <div class="row g-3 " formGroupName="addressDetail">
+            <h5 class="formHeader">Address Details</h5>
+            <div class="col-md-4 mt-1">
+              <label class="form-label">Address Type</label>
+              <select class="form-select form-select-sm"  formControlName="addressType">
+                <option selected disabled value="">Choose...</option>
+                <option>Billing Address</option>
+                <option>Delivery Address</option>
+                <option>Office Address</option>
+              </select>
+  
+            </div>
+            <div class="col-md-4 mt-1">
+              <label for="name" class="form-label">Line 1</label>
+              <input type="text" class="form-control form-control-sm" id="name" formControlName="add_line1">
+            </div>
+            <div class="col-md-4 mt-1">
+              <label for="area" class="form-label">
+                Line 2</label>
+              <input type="text" class="form-control form-control-sm" id="area" formControlName="add_line2">
+            </div>
+            <div class="col-md-4 mt-1">
+              <label for="name" class="form-label">Line 3</label>
+              <input type="text" class="form-control form-control-sm" id="name" formControlName="add_line3">
+            </div>
+            <div class="col-md-4 mt-1">
+              <label for="area" class="form-label">
+                Line 4</label>
+              <input type="text" class="form-control form-control-sm" id="area" formControlName="add_line4">
+            </div>
+  
+            <div class="col-md-4 mt-1">
+              <label class="form-label">Country</label>
+              <select class="form-select form-select-sm"  formControlName="country">
+                <option selected disabled value="">Choose...</option>
+                <option>ABC</option>
+                <option>PQY</option>
+              </select>
+  
+            </div>
+            <div class="col-md-4 mt-1">
+              <label class="form-label">State</label>
+              <select class="form-select form-select-sm"  formControlName="state">
+                <option selected disabled value="">Choose...</option>
+                <option>ABC</option>
+                <option>PQY</option>
+              </select>
+  
+            </div>
+            <div class="col-md-4 mt-1">
+              <label class="form-label">City</label>
+              <select class="form-select form-select-sm"  formControlName="city">
+                <option selected disabled value="">Choose...</option>
+                <option>ABC</option>
+                <option>PQY</option>
+              </select>
+  
+            </div>
+            <div class="col-md-4 mt-1">
+              <label class="form-label">
+                Pin</label>
+              <input type="text" class="form-control form-control-sm" formControlName="pincode">
+            </div>
+            <div class="col-md-4 mt-1 d-flex" style="width: 100%;">
+              <label>Default Address</label>
+              <div class="d-flex" style="margin-left: 20px;">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="status" [value]="'Y'"  formControlName="status">
+                  <p class="form-check-label" for="flexRadioDefault1">
+                    Yes
+                  </p>
+                </div>
+                <div class="form-check" style="margin-left: 10px;">
+                  <input class="form-check-input" type="radio" name="status"  [value]="'N'" formControlName="status">
+                  <p  for="flexRadioDefault2">
+                    No
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <h5 class="formHeader">Contact Details</h5>
-          <div class="col-md-4">
+          <div class="col-md-4 mt-1">
             <label class="form-label">
               Name</label>
-            <input type="text" class="form-control" required>
+            <input type="text" class="form-control form-control-sm" required>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 mt-1">
             <label class="form-label">
               Designation</label>
-            <input type="text" class="form-control" required>
+            <input type="text" class="form-control form-control-sm" required>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 mt-1">
             <label class="form-label">
               Phone Number</label>
-            <input type="text" class="form-control" required>
+            <input type="text" class="form-control form-control-sm" required>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 mt-1">
             <label class="form-label">
               Mobile Number</label>
-            <input type="text" class="form-control" required>
+            <input type="text" class="form-control form-control-sm" required>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 mt-1">
             <label class="form-label">
               Email Id</label>
-            <input type="email" class="form-control" required>
+            <input type="email" class="form-control form-control-sm" required>
           </div>
           <h5 class="formHeader">GST Applicable</h5>
           <div class="d-flex justify-content-between">
@@ -369,16 +389,16 @@
               </label>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 mt-1">
             <label class="form-label">
               GST Number </label>
-            <input type="email" class="form-control" required>
+            <input type="email" class="form-control form-control-sm" required>
           </div>
         </form>
       </div>
       <div class="modal-footer border-0">
         <div class="col-12 text-center">
-          <button class="btn btn-primary" type="submit">Submit form</button>
+          <button class="btn btn-primary" type="submit" (click)="formSubmit()">Submit form</button>
         </div>
       </div>
     </ng-template>

@@ -20,3 +20,6 @@
 td{
     color: #6c757d;
 }
+.form-control-sm{
+  height: 28px !important;
+}

@@ -52,3 +52,23 @@ export const updateTransport = TBOS_BaseURL + 'TransportMaster/Update'
 export const getTransportById = TBOS_BaseURL + 'TransportMaster/ReadById'
 export const deleteTransport = TBOS_BaseURL + 'TransportMaster/Delete'
 //#endregion
+
+//#region Address Detail API 
+export const getAllAddresss = TBOS_BaseURL + 'AddressDetail/ReadAll'
+export const createAddress = TBOS_BaseURL + 'AddressDetail/Create'
+export const updateAddress = TBOS_BaseURL + 'AddressDetail/Update'
+export const getAddressById = TBOS_BaseURL + 'AddressDetail/ReadById'
+export const deleteAddress = TBOS_BaseURL + 'AddressDetail/Delete'
+export const getAddressByMasterCode = TBOS_BaseURL + 'AddressDetail/ReadByMasterCode'
+export const getAddressByMasterCodeDefault = TBOS_BaseURL + 'AddressDetail/ReadByMasterCodeDefault'
+//#endregion
+
+//#region Contact Detail API 
+export const getAllContacts = TBOS_BaseURL + 'ContactDetail/ReadAll'
+export const createContact = TBOS_BaseURL + 'ContactDetail/Create'
+export const updateContact = TBOS_BaseURL + 'ContactDetail/Update'
+export const getContactById = TBOS_BaseURL + 'ContactDetail/ReadById'
+export const deleteContact = TBOS_BaseURL + 'ContactDetail/Delete'
+export const getContactByMasterCode = TBOS_BaseURL + 'ContactDetail/ReadByMasterCode'
+export const getContactByMasterCodeDefault = TBOS_BaseURL + 'ContactDetail/ReadByMasterCodeDefault'
+//#endregion
