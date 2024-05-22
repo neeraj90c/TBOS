@@ -123,7 +123,7 @@
     <h4 class="modal-title" id="createCustomerModalLabel">Create New Customer</h4>
     <button type="button" class="btn-close" (click)="customerModal.close()"></button>
   </div>
-  <div class="modal-body ">
+  <div class="modal-body" style="height: 500px; overflow-y: scroll;">
     <form class="row g-3 " [formGroup]="mainForm" (ngSubmit)="formSubmit()">
       <div class="row" formGroupName="customerDetail">
         <h5 class="formHeader">Customer Details</h5>

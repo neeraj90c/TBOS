@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
         })
       ).subscribe();
     }else{
-      //this.Logout();
+      this.Logout();
     }
   }
 
