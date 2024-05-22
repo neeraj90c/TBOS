@@ -2,407 +2,411 @@
   <div>
     <h4 class="page-title mt-0">Customer List</h4>
   </div>
-    
-    <div class="d-flex align-items-center justify-content-end">
-      <div class="menuList border-end" (click)="openCustomerModal()"><i
-          class="fa fa-user-plus"></i> Create Customer</div>
-      <div class="menuList border-end"><i class=" uil uil-print"></i> Print</div>
-      <div class="menuList"><i class=" mdi mdi-file-excel-outline"></i> Export To Excel</div>
-    </div>
+
+  <div class="d-flex align-items-center justify-content-end">
+    <div class="menuList border-end" (click)="openCustomerModal()"><i class="fa fa-user-plus"></i> Create Customer</div>
+    <div class="menuList border-end"><i class=" uil uil-print"></i> Print</div>
+    <div class="menuList"><i class=" mdi mdi-file-excel-outline"></i> Export To Excel</div>
+  </div>
 </div>
 
-      <!-- Modal -->
-      <div class="modal fade" id="createCustomerModal" tabindex="-1" aria-labelledby="createCustomerModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-scrollable">
-        <div class="modal-content">
-      
+<!-- Modal -->
+<div class="modal fade" id="createCustomerModal" tabindex="-1" aria-labelledby="createCustomerModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+
+    </div>
+  </div>
+</div>
+
+<!-- table -->
+<div class="table-responsive tableHeight">
+  <table class="table table-bordered table-sm mb-0 fixed-columns" style="width: 200vw;">
+    <thead class="bg-light">
+      <tr>
+        <th scope="col" style="width: 1%;">SrNo</th>
+        <th scope="col" style="width: 5%;">
+          <span id="masterName">Customer Name</span>
+          <input id="masterNameSearchInput" type="search" class="form-control form-control-sm" placeholder=""
+            style="display: none;">
+          <i id="searchIconName" class="mdi mdi-filter-outline"></i>
+        </th>
+        <th scope="col" style="width: 5%;">State
+          <i id="searchIconName" class="mdi mdi-filter-outline"></i>
+        </th>
+        <th scope="col" style="width: 2.5%;">(C-S) GST</th>
+        <th scope="col" style="width: 1.5%;">IGST</th>
+        <th scope="col" style="width: 1.5%;">UGST</th>
+        <th scope="col" style="width: 2.5%;">EGST <i class="mdi mdi-filter-outline"></i></th>
+        <th scope="col" style="width: 4%;">GST Tin No.</th>
+        <th scope="col" style="width: 10%;">Address <i id="searchIconName" class="mdi mdi-filter-outline"></i>
+        </th>
+        <th scope="col" style="width: 4%;">City <i id="searchIconName" class="mdi mdi-filter-outline"></i>
+        </th>
+        <th scope="col" style="width: 6%;">Agent Name <i id="searchIconName" class="mdi mdi-filter-outline"></i></th>
+        <th scope="col" style="width: 6%;">Person Name</th>
+        <th scope="col" style="width: 3%;">Transport <i id="searchIconName" class="mdi mdi-filter-outline"></i></th>
+        <th scope="col" style="width: 5%;">Tax Form <i id="searchIconName" class="mdi mdi-filter-outline"></i>
+        </th>
+        <th scope="col" style="width: 5%;">Tin No</th>
+        <th scope="col" style="width: 5%;">Priority</th>
+        <th scope="col" style="width: 5%;">Cr. Amt. Limit</th>
+        <th scope="col" style="width: 6%;">Pan Number</th>
+        <th scope="col" style="width: 2%;">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of customerList;let i = index;">
+        <td>{{customer.rowNo}}</td>
+        <td>{{customer.customerName}}</td>
+        <td>{{customer.state}}</td>
+        <td>{{customer.cgst}}</td>
+        <td>{{customer.igst}}</td>
+        <td>{{customer.utgst}}</td>
+        <td>{{customer.exportGST}}</td>
+        <td>{{customer.gstiN_No}}</td>
+        <td>
+          {{customer.add_line1 }}
+          {{customer.add_line2 }}
+          {{customer.add_line3 }}
+          {{customer.add_line4}}
+        </td>
+        <td>{{customer.city}}</td>
+        <td>{{customer.agentName}}</td>
+        <td>{{customer.personName}}</td>
+        <td>{{customer.transportName}}</td>
+        <td>{{customer.taxForm}}</td>
+        <td>{{customer.tin_No}}</td>
+        <td>{{customer.priority}}</td>
+        <td>{{customer.creditAmountLock}}</td>
+        <td>{{customer.panNo}}</td>
+        <td class="text-center action">
+          <i class="uil uil-edit-alt "></i>
+          <i class="mdi mdi-delete-outline "></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<!-- pagination -->
+<div class="mt-1">
+  <nav class="d-flex justify-content-between">
+    <ul class="mt-1">
+      Page 1 of 20
+    </ul>
+    <ul class="pagination pagination-rounded mb-0 justify-content-end">
+      <li class="page-item">
+        <a class="page-link" href="" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link" href="">1</a></li>
+      <li class="page-item"><a class="page-link" href="">2</a></li>
+      <li class="page-item active"><a class="page-link" href="">3</a></li>
+      <li class="page-item"><a class="page-link" href="">4</a></li>
+      <li class="page-item"><a class="page-link" href="">5</a></li>
+      <li class="page-item">
+        <a class="page-link" href="" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+
+<ng-template #customerModalTemplate let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="createCustomerModalLabel">Create New Customer</h4>
+    <button type="button" class="btn-close" (click)="customerModal.close()"></button>
+  </div>
+  <div class="modal-body ">
+    <form class="row g-3 " [formGroup]="mainForm" (ngSubmit)="formSubmit()">
+      <div class="row" formGroupName="customerDetail">
+        <h5 class="formHeader">Customer Details</h5>
+        <div class="col-md-4 mt-1">
+          <label for="name">Customer Name</label>
+          <input type="text" class="form-control form-control-sm" id="name" formControlName="customerName">
+        </div>
+        <div class="col-md-4 mt-1">
+          <label for="area" >
+            Area/Zone/Branch</label>
+          <input type="text" class="form-control form-control-sm" id="area" formControlName="customerBranch">
+        </div>
+        <div class="col-md-4 mt-1">
+          <label >Transport</label>
+          <select class="form-select form-select-sm" formControlName="transportId">
+            <option selected disabled value="">Choose...</option>
+            <option *ngFor="let transport of transportList" [value]="transport.transportId">{{transport.transportName}}
+            </option>
+          </select>
+
+        </div>
+        <div class="col-md-4 mt-1">
+          <label >Agent Name</label>
+          <select class="form-select form-select-sm" formControlName="agentId">
+            <option selected disabled value="">Choose...</option>
+            <option *ngFor=" let agent of agentList" [value]="agent.agentId">{{agent.agentName}}</option>
+          </select>
+
+        </div>
+        <div class="col-md-4 mt-1">
+          <label for="area" >
+            Payment Terms</label>
+          <input type="text" class="form-control form-control-sm" formControlName="paymentTerm">
+        </div>
+        <div class="col-md-4 mt-1">
+          <label for="area" >
+            Cr. Days Lock</label>
+          <input type="text" class="form-control form-control-sm" formControlName="creditDaysLock">
+        </div>
+        <div class="col-md-4 mt-1">
+          <label >Pmt. Days</label>
+          <select class="form-select form-select-sm" formControlName="paymentDay">
+            <option selected disabled value="">Choose...</option>
+            <option>Sunday</option>
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+          </select>
+
+        </div>
+        <div class="col-md-4 mt-1">
+          <label for="area" >
+            Agent Comm</label>
+          <input type="text" class="form-control form-control-sm" formControlName="agentCommission">
+        </div>
+        <div class="col-md-4 mt-1">
+          <label for="area" >
+            Tax Form</label>
+          <input type="text" class="form-control form-control-sm" formControlName="taxForm">
+        </div>
+        <div class="col-md-4 mt-1">
+          <label for="area" >
+            VAT Tin No</label>
+          <input type="text" class="form-control form-control-sm" formControlName="tin_No">
+        </div>
+        <div class="col-md-4 mt-1">
+          <label for="area" >
+            CST Tin No</label>
+          <input type="text" class="form-control form-control-sm" formControlName="cstTinNo">
+        </div>
+        <div class="col-md-4 mt-1">
+          <label for="area" >
+            Pan Number</label>
+          <input type="text" class="form-control form-control-sm" formControlName="panNo">
+        </div>
+        <div class="col-md-4 mt-1">
+          <label >Customer Type</label>
+          <select class="form-select form-select-sm" formControlName="customerType">
+            <option selected disabled value="">Choose...</option>
+            <option>Direct Party</option>
+            <option>Distributor</option>
+          </select>
+
+        </div>
+        <div class="col-md-4 mt-1">
+          <label >Default Price</label>
+          <select class="form-select form-select-sm" formControlName="defaultPrice">
+            <option selected disabled value="">Choose...</option>
+            <option>P1</option>
+            <option>P2</option>
+          </select>
+
+        </div>
+        <div class="col-md-4 mt-1">
+          <label >Default Invoice</label>
+          <select class="form-select form-select-sm" formControlName="defaultInvoice">
+            <option selected disabled value="">Choose...</option>
+            <option>Charming</option>
+            <option>Invoice</option>
+          </select>
+
+        </div>
+        <div class="col-md-4 mt-1">
+          <label for="area" >
+            Priority</label>
+          <input type="text" class="form-control form-control-sm" formControlName="priority">
+        </div>
+        <div class="col-md-4 mt-1">
+          <label for="area" >
+            Credit Amount Lock</label>
+          <input type="text" class="form-control form-control-sm" formControlName="creditAmountLock">
+        </div>
+        <div class="col-md-4 mt-1">
+          <label >GST Reverse Charge</label>
+          <select class="form-select form-select-sm" formControlName="gSTReverseCharge">
+            <option selected disabled value="">Choose...</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+
         </div>
       </div>
-    </div>
+      <hr>
+      <div class="row" formGroupName="addressDetail">
+        <h5 class="formHeader">Address Details</h5>
+        <div class="col-md-4 mt-1">
+          <label >Address Type</label>
+          <select class="form-select form-select-sm" formControlName="addressType">
+            <option selected disabled value="">Choose...</option>
+            <option>Billing Address</option>
+            <option>Delivery Address</option>
+            <option>Office Address</option>
+          </select>
 
-    <!-- table -->
-    <div class="table-responsive tableHeight">
-      <table class="table table-bordered table-sm mb-0 fixed-columns" style="width: 200vw;">
-        <thead class="bg-light">
-          <tr>
-            <th scope="col" style="width: 1%;">SrNo</th>
-            <th scope="col" style="width: 5%;">
-              <span id="masterName">Customer Name</span>
-              <input id="masterNameSearchInput" type="search" class="form-control form-control-sm" placeholder=""
-                style="display: none;">
-              <i id="searchIconName" class="mdi mdi-filter-outline"></i>
-            </th>
-            <th scope="col" style="width: 5%;">State
-              <i id="searchIconName" class="mdi mdi-filter-outline"></i>
-            </th>
-            <th scope="col" style="width: 2.5%;">(C-S) GST</th>
-            <th scope="col" style="width: 1.5%;">IGST</th>
-            <th scope="col" style="width: 1.5%;">UGST</th>
-            <th scope="col" style="width: 2.5%;">EGST <i class="mdi mdi-filter-outline"></i></th>
-            <th scope="col" style="width: 4%;">GST Tin No.</th>
-            <th scope="col" style="width: 10%;">Address <i id="searchIconName" class="mdi mdi-filter-outline"></i>
-            </th>
-            <th scope="col" style="width: 4%;">City <i id="searchIconName" class="mdi mdi-filter-outline"></i>
-            </th>
-            <th scope="col" style="width: 6%;">Agent Name <i id="searchIconName"
-                class="mdi mdi-filter-outline"></i></th>
-            <th scope="col" style="width: 6%;">Person Name</th>
-            <th scope="col" style="width: 3%;">Transport <i id="searchIconName"
-                class="mdi mdi-filter-outline"></i></th>
-            <th scope="col" style="width: 5%;">Tax Form <i id="searchIconName" class="mdi mdi-filter-outline"></i>
-            </th>
-            <th scope="col" style="width: 5%;">Tin No</th>
-            <th scope="col" style="width: 5%;">Priority</th>
-            <th scope="col" style="width: 5%;">Cr. Amt. Limit</th>
-            <th scope="col" style="width: 6%;">Pan Number</th>
-            <th scope="col" style="width: 2%;">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let customer of customerList;let i = index;">
-            <td>{{customer.rowNo}}</td>
-            <td>{{customer.customerName}}</td>
-            <td>{{customer.state}}</td>
-            <td>{{customer.cgst}}</td>
-            <td>{{customer.igst}}</td>
-            <td>{{customer.utgst}}</td>
-            <td>{{customer.exportGST}}</td>
-            <td>{{customer.gstiN_No}}</td>
-            <td>
-              {{customer.add_line1 }}
-              {{customer.add_line2 }}
-              {{customer.add_line3 }}
-              {{customer.add_line4}}
-            </td>
-            <td>{{customer.city}}</td>
-            <td>{{customer.agentName}}</td>
-            <td>{{customer.personName}}</td>
-            <td>{{customer.transportName}}</td>
-            <td>{{customer.taxForm}}</td>
-            <td>{{customer.tin_No}}</td>
-            <td>{{customer.priority}}</td>
-            <td>{{customer.creditAmountLock}}</td>
-            <td>{{customer.panNo}}</td>
-            <td class="text-center action">
-              <i class="uil uil-edit-alt "></i>
-              <i class="mdi mdi-delete-outline "></i>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        </div>
+        <div class="col-md-4 mt-1">
+          <label for="name" >Line 1</label>
+          <input type="text" class="form-control form-control-sm" id="name" formControlName="add_line1">
+        </div>
+        <div class="col-md-4 mt-1">
+          <label for="area" >
+            Line 2</label>
+          <input type="text" class="form-control form-control-sm" id="area" formControlName="add_line2">
+        </div>
+        <div class="col-md-4 mt-1">
+          <label for="name" >Line 3</label>
+          <input type="text" class="form-control form-control-sm" id="name" formControlName="add_line3">
+        </div>
+        <div class="col-md-4 mt-1">
+          <label for="area" >
+            Line 4</label>
+          <input type="text" class="form-control form-control-sm" id="area" formControlName="add_line4">
+        </div>
 
-    </div>
+        <div class="col-md-4 mt-1">
+          <label >Country</label>
+          <select class="form-select form-select-sm" formControlName="country">
+            <option selected disabled value="">Choose...</option>
+            <option>ABC</option>
+            <option>PQY</option>
+          </select>
 
-    <!-- pagination -->
-    <div class="mt-1">
-      <nav class="d-flex justify-content-between">
-        <ul class="mt-1">
-          Page 1 of 20
-        </ul>
-        <ul class="pagination pagination-rounded mb-0 justify-content-end">
-          <li class="page-item">
-            <a class="page-link" href="" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="">1</a></li>
-          <li class="page-item"><a class="page-link" href="">2</a></li>
-          <li class="page-item active"><a class="page-link" href="">3</a></li>
-          <li class="page-item"><a class="page-link" href="">4</a></li>
-          <li class="page-item"><a class="page-link" href="">5</a></li>
-          <li class="page-item">
-            <a class="page-link" href="" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+        </div>
+        <div class="col-md-4 mt-1">
+          <label >State</label>
+          <select class="form-select form-select-sm" formControlName="state">
+            <option selected disabled value="">Choose...</option>
+            <option>ABC</option>
+            <option>PQY</option>
+          </select>
 
+        </div>
+        <div class="col-md-4 mt-1">
+          <label >City</label>
+          <select class="form-select form-select-sm" formControlName="city">
+            <option selected disabled value="">Choose...</option>
+            <option>ABC</option>
+            <option>PQY</option>
+          </select>
 
-    <ng-template #customerModalTemplate let-modal>
-      <div class="modal-header">
-        <h4 class="modal-title" id="createCustomerModalLabel">Create New Customer</h4>
-        <button type="button" class="btn-close" (click)="customerModal.close()"></button>
-      </div>
-      <div class="modal-body ">
-        <form class="row g-3 " [formGroup]="mainForm" (ngSubmit)="formSubmit()">
-          <div  class="row g-3 " formGroupName="customerDetail">
-            <h5 class="formHeader">Customer Details</h5>
-            <div class="col-md-4">
-              <label for="name" >Customer Name</label>
-              <input type="text" class="form-control form-control-sm" id="name" formControlName="customerName">
-            </div>
-            <div class="col-md-4">
-              <label for="area" class="form-label">
-                Area/Zone/Branch</label>
-              <input type="text" class="form-control form-control-sm" id="area" formControlName="customerBranch">
-            </div>
-            <div class="col-md-4">
-              <label class="form-label">Transport</label>
-              <select class="form-select form-select-sm" formControlName="transportId">
-                <option selected disabled value="">Choose...</option>
-                <option *ngFor="let transport of transportList" [value]="transport.transportId">{{transport.transportName}}</option>
-              </select>
-  
-            </div>
-            <div class="col-md-4 mt-1">
-              <label class="form-label">Agent Name</label>
-              <select class="form-select form-select-sm" formControlName="agentId">
-                <option selected disabled value="">Choose...</option>
-                <option *ngFor=" let agent of agentList" [value]="agent.agentId">{{agent.agentName}}</option>
-              </select>
-  
-            </div>
-            <div class="col-md-4 mt-1">
-              <label for="area" class="form-label">
-                Payment Terms</label>
-              <input type="text" class="form-control form-control-sm" formControlName="paymentTerm">
-            </div>
-            <div class="col-md-4 mt-1">
-              <label for="area" class="form-label">
-                Cr. Days Lock</label>
-              <input type="text" class="form-control form-control-sm" formControlName="creditDaysLock">
-            </div>
-            <div class="col-md-4 mt-1">
-              <label class="form-label">Pmt. Days</label>
-              <select class="form-select form-select-sm"  formControlName="paymentDay">
-                <option selected disabled value="">Choose...</option>
-                <option>Sunday</option>
-                <option>Monday</option>
-                <option>Tuesday</option>
-                <option>Wednesday</option>
-              </select>
-  
-            </div>
-            <div class="col-md-4 mt-1">
-              <label for="area" class="form-label">
-                Agent Comm</label>
-              <input type="text" class="form-control form-control-sm" formControlName="agentCommission">
-            </div>
-            <div class="col-md-4 mt-1">
-              <label for="area" class="form-label">
-                Tax Form</label>
-              <input type="text" class="form-control form-control-sm" formControlName="taxForm">
-            </div>
-            <div class="col-md-4 mt-1">
-              <label for="area" class="form-label">
-                VAT Tin No</label>
-              <input type="text" class="form-control form-control-sm" formControlName="tin_No">
-            </div>
-            <div class="col-md-4 mt-1">
-              <label for="area" class="form-label">
-                CST Tin No</label>
-              <input type="text" class="form-control form-control-sm" formControlName="cstTinNo">
-            </div>
-            <div class="col-md-4 mt-1">
-              <label for="area" class="form-label">
-                Pan Number</label>
-              <input type="text" class="form-control form-control-sm" formControlName="panNo">
-            </div>
-            <div class="col-md-4 mt-1">
-              <label class="form-label">Customer Type</label>
-              <select class="form-select form-select-sm" formControlName="customerType">
-                <option selected disabled value="">Choose...</option>
-                <option>Direct Party</option>
-                <option>Distributor</option>
-              </select>
-  
-            </div>
-            <div class="col-md-4 mt-1">
-              <label class="form-label">Default Price</label>
-              <select class="form-select form-select-sm"  formControlName="defaultPrice">
-                <option selected disabled value="">Choose...</option>
-                <option>P1</option>
-                <option>P2</option>
-              </select>
-  
-            </div>
-            <div class="col-md-4 mt-1">
-              <label class="form-label">Default Invoice</label>
-              <select class="form-select form-select-sm"  formControlName="defaultInvoice">
-                <option selected disabled value="">Choose...</option>
-                <option>Charming</option>
-                <option>Invoice</option>
-              </select>
-  
-            </div>
-            <div class="col-md-4 mt-1">
-              <label for="area" class="form-label">
-                Priority</label>
-              <input type="text" class="form-control form-control-sm" formControlName="priority">
-            </div>
-            <div class="col-md-4 mt-1">
-              <label for="area" class="form-label">
-                Credit Amount Lock</label>
-              <input type="text" class="form-control form-control-sm" formControlName="creditAmountLock">
-            </div>
-            <div class="col-md-4 mt-1">
-              <label class="form-label">GST Reverse Charge</label>
-              <select class="form-select form-select-sm"  formControlName="gSTReverseCharge">
-                <option selected disabled value="">Choose...</option>
-                <option>Yes</option>
-                <option>No</option>
-              </select>
-  
-            </div>
-          </div>
-          <div class="row g-3 " formGroupName="addressDetail">
-            <h5 class="formHeader">Address Details</h5>
-            <div class="col-md-4 mt-1">
-              <label class="form-label">Address Type</label>
-              <select class="form-select form-select-sm"  formControlName="addressType">
-                <option selected disabled value="">Choose...</option>
-                <option>Billing Address</option>
-                <option>Delivery Address</option>
-                <option>Office Address</option>
-              </select>
-  
-            </div>
-            <div class="col-md-4 mt-1">
-              <label for="name" class="form-label">Line 1</label>
-              <input type="text" class="form-control form-control-sm" id="name" formControlName="add_line1">
-            </div>
-            <div class="col-md-4 mt-1">
-              <label for="area" class="form-label">
-                Line 2</label>
-              <input type="text" class="form-control form-control-sm" id="area" formControlName="add_line2">
-            </div>
-            <div class="col-md-4 mt-1">
-              <label for="name" class="form-label">Line 3</label>
-              <input type="text" class="form-control form-control-sm" id="name" formControlName="add_line3">
-            </div>
-            <div class="col-md-4 mt-1">
-              <label for="area" class="form-label">
-                Line 4</label>
-              <input type="text" class="form-control form-control-sm" id="area" formControlName="add_line4">
-            </div>
-  
-            <div class="col-md-4 mt-1">
-              <label class="form-label">Country</label>
-              <select class="form-select form-select-sm"  formControlName="country">
-                <option selected disabled value="">Choose...</option>
-                <option>ABC</option>
-                <option>PQY</option>
-              </select>
-  
-            </div>
-            <div class="col-md-4 mt-1">
-              <label class="form-label">State</label>
-              <select class="form-select form-select-sm"  formControlName="state">
-                <option selected disabled value="">Choose...</option>
-                <option>ABC</option>
-                <option>PQY</option>
-              </select>
-  
-            </div>
-            <div class="col-md-4 mt-1">
-              <label class="form-label">City</label>
-              <select class="form-select form-select-sm"  formControlName="city">
-                <option selected disabled value="">Choose...</option>
-                <option>ABC</option>
-                <option>PQY</option>
-              </select>
-  
-            </div>
-            <div class="col-md-4 mt-1">
-              <label class="form-label">
-                Pin</label>
-              <input type="text" class="form-control form-control-sm" formControlName="pincode">
-            </div>
-            <div class="col-md-4 mt-1 d-flex" style="width: 100%;">
-              <label>Default Address</label>
-              <div class="d-flex" style="margin-left: 20px;">
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="status" [value]="'Y'"  formControlName="status">
-                  <p class="form-check-label" for="flexRadioDefault1">
-                    Yes
-                  </p>
-                </div>
-                <div class="form-check" style="margin-left: 10px;">
-                  <input class="form-check-input" type="radio" name="status"  [value]="'N'" formControlName="status">
-                  <p  for="flexRadioDefault2">
-                    No
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <h5 class="formHeader">Contact Details</h5>
-          <div class="col-md-4 mt-1">
-            <label class="form-label">
-              Name</label>
-            <input type="text" class="form-control form-control-sm" required>
-          </div>
-          <div class="col-md-4 mt-1">
-            <label class="form-label">
-              Designation</label>
-            <input type="text" class="form-control form-control-sm" required>
-          </div>
-          <div class="col-md-4 mt-1">
-            <label class="form-label">
-              Phone Number</label>
-            <input type="text" class="form-control form-control-sm" required>
-          </div>
-          <div class="col-md-4 mt-1">
-            <label class="form-label">
-              Mobile Number</label>
-            <input type="text" class="form-control form-control-sm" required>
-          </div>
-          <div class="col-md-4 mt-1">
-            <label class="form-label">
-              Email Id</label>
-            <input type="email" class="form-control form-control-sm" required>
-          </div>
-          <h5 class="formHeader">GST Applicable</h5>
-          <div class="d-flex justify-content-between">
+        </div>
+        <div class="col-md-4 mt-1">
+          <label >
+            Pin</label>
+          <input type="text" class="form-control form-control-sm" formControlName="pincode">
+        </div>
+        <div class="col-md-4 mt-1 d-flex" style="width: 100%;height: 10px;">
+          <label>Default Address</label>
+          <div class="d-flex" style="margin-left: 20px;">
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="GSTRadio" id="cGST">
+              <input class="form-check-input" type="radio" name="status" [value]="'Y'" formControlName="status">
+              <p class="form-check-label" for="flexRadioDefault1">
+                Yes
+              </p>
+            </div>
+            <div class="form-check" style="margin-left: 10px;">
+              <input class="form-check-input" type="radio" name="status" [value]="'N'" formControlName="status">
+              <p for="flexRadioDefault2">
+                No
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row" formGroupName="contactDetail">
+        <h5 class="formHeader">Contact Details</h5>
+        <div class="col-md-4 mt-1">
+          <label >
+            Name</label>
+          <input type="text" class="form-control form-control-sm" formControlName="personName">
+        </div>
+        <div class="col-md-4 mt-1">
+          <label >
+            Designation</label>
+          <input type="text" class="form-control form-control-sm" formControlName="designation">
+        </div>
+        <div class="col-md-4 mt-1">
+          <label >
+            Phone Number</label>
+          <input type="text" class="form-control form-control-sm" formControlName="phoneNumber">
+        </div>
+        <div class="col-md-4 mt-1">
+          <label >
+            Mobile Number</label>
+          <input type="text" class="form-control form-control-sm" formControlName="mobileNumber">
+        </div>
+        <div class="col-md-4 mt-1">
+          <label >
+            Email Id</label>
+          <input type="email" class="form-control form-control-sm" formControlName="emailId">
+        </div>
+        
+      </div>
+      <hr>
+      <div class="row" formGroupName="customerDetail">
+        <div class="col-md-6">
+          <h5 class="formHeader">GST Applicable</h5>
+          <div class="d-flex">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="gst" (change)="onGstChange('cGST')" [checked]="customerForm.get('cGST')?.value === 'Y'">
               <label class="form-check-label" for="cGST">
                 CGST
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="GSTRadio" id="SGST" checked>
+              <input class="form-check-input" type="radio" name="gst" (change)="onGstChange('sGST')" [checked]="customerForm.get('sGST')?.value === 'Y'">
               <label class="form-check-label" for="SGST">
                 SGST
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="GSTRadio" id="IGST" checked>
+              <input class="form-check-input" type="radio" name="gst" (change)="onGstChange('iGST')" [checked]="customerForm.get('iGST')?.value === 'Y'">
               <label class="form-check-label" for="IGST">
                 IGST
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="GSTRadio" id="UTGST" checked>
+              <input class="form-check-input" type="radio" name="gst" (change)="onGstChange('uTGST')" [checked]="customerForm.get('uTGST')?.value === 'Y'">
               <label class="form-check-label" for="UTGST">
                 UTGST
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="GSTRadio" id="EGST" checked>
+              <input class="form-check-input" type="radio" name="gst" (change)="onGstChange('exportGST')" [checked]="customerForm.get('exportGST')?.value === 'Y'">
               <label class="form-check-label" for="EGST">
                 EGST
               </label>
             </div>
           </div>
-          <div class="col-md-4 mt-1">
-            <label class="form-label">
-              GST Number </label>
-            <input type="email" class="form-control form-control-sm" required>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer border-0">
-        <div class="col-12 text-center">
-          <button class="btn btn-primary" type="submit" (click)="formSubmit()">Submit form</button>
+        </div>
+
+        <div class="col-md-6"> 
+          <label >
+            GST Number </label>
+          <input type="email" class="form-control form-control-sm" formControlName="gSTIN_No">
         </div>
       </div>
-    </ng-template>
-
-
-
-    
+    </form>
+  </div>
+  <div class="modal-footer border-0">
+    <div class="col-12 text-center">
+      <button class="btn btn-primary" type="submit" (click)="formSubmit()">Submit form</button>
+    </div>
+  </div>
+</ng-template>

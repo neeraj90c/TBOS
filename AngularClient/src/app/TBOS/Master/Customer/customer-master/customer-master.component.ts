@@ -22,7 +22,7 @@ export class CustomerMasterComponent implements OnInit {
     private customerService: CustomerService,
     private agentMasterService: AgentMasterService,
     private transportMasterService: TransportMasterService,
-    private addressService:AddressDetailService,
+    private addressService: AddressDetailService,
     private modalService: NgbModal
   ) { }
 
@@ -71,16 +71,29 @@ export class CustomerMasterComponent implements OnInit {
     add_line2: new FormControl(''),
     add_line3: new FormControl(''),
     add_line4: new FormControl(''),
-    city: new FormControl(''),    
+    city: new FormControl(''),
     state: new FormControl(''),
     country: new FormControl(''),
     pincode: new FormControl(''),
     status: new FormControl(0)
   })
 
+  conactForm = new FormGroup({
+    contactId: new FormControl(0),
+    masterCode: new FormControl(''),
+    personName: new FormControl(''),
+    designation: new FormControl(''),
+    phoneNumber: new FormControl(''),
+    mobileNumber: new FormControl(''),
+    emailId: new FormControl(''),
+    contactStatus: new FormControl(0),
+    actionUser: new FormControl(''),
+  })
+
   mainForm = new FormGroup({
     customerDetail: this.customerForm,
-    addressDetail: this.addressForm
+    addressDetail: this.addressForm,
+    contactDetail: this.conactForm
   });
 
   @ViewChild('customerModalTemplate') customerModalContent!: ElementRef
@@ -93,23 +106,36 @@ export class CustomerMasterComponent implements OnInit {
     this.customerService.ReadAllCustomerPaginated(body).subscribe(res => {
       this.customerList = res.items
     })
-    this.agentMasterService.ReadAllAgents().subscribe(res=>{
+    this.agentMasterService.ReadAllAgents().subscribe(res => {
       this.agentList = res.items
     })
-    this.transportMasterService.ReadAllTransports().subscribe(res=>{
+    this.transportMasterService.ReadAllTransports().subscribe(res => {
       this.transportList = res.items
     })
-    this.addressService.ReadAllAddress().subscribe(res=>{
+    this.addressService.ReadAllAddress().subscribe(res => {
       console.log(res);
-      
+
     })
   }
 
   openCustomerModal() {
     this.customerModal = this.modalService.open(this.customerModalContent, { size: 'xl' })
   }
-  formSubmit(){
+  formSubmit() {
     console.log(this.mainForm.value);
+
+  }
+
+
+  onGstChange(selectedGst: string) {
+    this.customerForm.patchValue({
+      cGST: selectedGst === 'cGST' ? 'Y' : 'N',
+      sGST: selectedGst === 'sGST' ? 'Y' : 'N',
+      iGST: selectedGst === 'iGST' ? 'Y' : 'N',
+      uTGST: selectedGst === 'uTGST' ? 'Y' : 'N',
+      exportGST: selectedGst === 'exportGST' ? 'Y' : 'N'
+    });
+    console.log(this.customerForm.value);
     
   }
 
