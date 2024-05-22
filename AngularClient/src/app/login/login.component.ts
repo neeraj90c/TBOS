@@ -44,11 +44,13 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('access_token', res.data.token.trim());
             return this.authService.validateToken();
           } else {
+            this.loaderService.dismiss()
             this.loginError = res.data.designation;
             return of(null);
           }
         }),
         catchError((err) => {
+          this.loaderService.dismiss();
           this.authService.SignOutUser();
           return of(null);
         })
