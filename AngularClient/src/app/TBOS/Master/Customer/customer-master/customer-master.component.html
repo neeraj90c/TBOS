@@ -138,19 +138,35 @@
         </div>
         <div class="col-md-4 mt-1">
           <label >Transport</label>
-          <select class="form-select form-select-sm" formControlName="transportId">
+          <ng-select  style="cursor: pointer;"
+          [items]="transportList" 
+          bindLabel='transportName' 
+          bindValue='transportId'
+          [placeholder]="'Select Transport'"
+          formControlName="transportId"
+          ></ng-select>
+          <!-- <select class="form-select form-select-sm" formControlName="transportId">
             <option selected disabled value="">Choose...</option>
             <option *ngFor="let transport of transportList" [value]="transport.transportId">{{transport.transportName}}
             </option>
-          </select>
-
+          </select> -->
         </div>
         <div class="col-md-4 mt-1">
           <label >Agent Name</label>
-          <select class="form-select form-select-sm" formControlName="agentId">
+
+          <ng-select  style="cursor: pointer;"
+          [items]="agentList" 
+          [bindLabel]="'agentName'" 
+          [bindValue]="'agentId'" 
+          clearAllText="Clear"
+          [placeholder]="'Select Agent...'"
+          formControlName="agentId"
+          ></ng-select>
+
+          <!-- <select class="form-select form-select-sm" formControlName="agentId">
             <option selected disabled value="">Choose...</option>
             <option *ngFor=" let agent of agentList" [value]="agent.agentId">{{agent.agentName}}</option>
-          </select>
+          </select> -->
 
         </div>
         <div class="col-md-4 mt-1">
@@ -215,7 +231,6 @@
             <option>P1</option>
             <option>P2</option>
           </select>
-
         </div>
         <div class="col-md-4 mt-1">
           <label >Default Invoice</label>
@@ -243,7 +258,49 @@
             <option>Yes</option>
             <option>No</option>
           </select>
-
+        </div>
+        <div class="col-md-4 mt-1">
+          <label>GST Applicable</label>
+          <div class="col-md-6">
+            <div class="d-flex gstForm align-items-end">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gst" (change)="onGstChange('cGST')" [checked]="customerForm.get('cGST')?.value === 'Y'">
+                <label class="form-check-label" for="cGST">
+                  CGST
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gst" (change)="onGstChange('sGST')" [checked]="customerForm.get('sGST')?.value === 'Y'">
+                <label class="form-check-label" for="SGST">
+                  SGST
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gst" (change)="onGstChange('iGST')" [checked]="customerForm.get('iGST')?.value === 'Y'">
+                <label class="form-check-label" for="IGST">
+                  IGST
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gst" (change)="onGstChange('uTGST')" [checked]="customerForm.get('uTGST')?.value === 'Y'">
+                <label class="form-check-label" for="UTGST">
+                  UTGST
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gst" (change)="onGstChange('exportGST')" [checked]="customerForm.get('exportGST')?.value === 'Y'">
+                <label class="form-check-label" for="EGST">
+                  EGST
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"> 
+          <label >
+            GST Number </label>
+          <input type="email" class="form-control form-control-sm" formControlName="gSTIN_No">
         </div>
       </div>
       <hr>
@@ -356,52 +413,27 @@
             Email Id</label>
           <input type="email" class="form-control form-control-sm" formControlName="emailId">
         </div>
-        
-      </div>
-      <hr>
-      <div class="row" formGroupName="customerDetail">
-        <div class="col-md-6">
-          <h5 class="formHeader">GST Applicable</h5>
-          <div class="d-flex">
+        <div class="col-md-4 mt-1 d-flex" style="width: 100%;height: 10px;">
+          <label>Default Contact</label>
+          <div class="d-flex" style="margin-left: 20px;">
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="gst" (change)="onGstChange('cGST')" [checked]="customerForm.get('cGST')?.value === 'Y'">
-              <label class="form-check-label" for="cGST">
-                CGST
-              </label>
+              <input class="form-check-input" type="radio" name="contactStatus" [value]="'Y'" formControlName="contactStatus">
+              <p class="form-check-label" for="flexRadioDefault1">
+                Yes
+              </p>
             </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="gst" (change)="onGstChange('sGST')" [checked]="customerForm.get('sGST')?.value === 'Y'">
-              <label class="form-check-label" for="SGST">
-                SGST
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="gst" (change)="onGstChange('iGST')" [checked]="customerForm.get('iGST')?.value === 'Y'">
-              <label class="form-check-label" for="IGST">
-                IGST
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="gst" (change)="onGstChange('uTGST')" [checked]="customerForm.get('uTGST')?.value === 'Y'">
-              <label class="form-check-label" for="UTGST">
-                UTGST
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="gst" (change)="onGstChange('exportGST')" [checked]="customerForm.get('exportGST')?.value === 'Y'">
-              <label class="form-check-label" for="EGST">
-                EGST
-              </label>
+            <div class="form-check" style="margin-left: 10px;">
+              <input class="form-check-input" type="radio" name="contactStatus" [value]="'N'" formControlName="contactStatus">
+              <p for="flexRadioDefault2">
+                No
+              </p>
             </div>
           </div>
         </div>
-
-        <div class="col-md-6"> 
-          <label >
-            GST Number </label>
-          <input type="email" class="form-control form-control-sm" formControlName="gSTIN_No">
-        </div>
+        
       </div>
+      <hr>
+
     </form>
   </div>
   <div class="modal-footer border-0">

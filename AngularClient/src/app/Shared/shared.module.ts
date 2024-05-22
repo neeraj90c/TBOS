@@ -5,6 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LoaderComponent } from './loader/loader.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { LoaderComponent } from './loader/loader.component';
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    NgSelectModule
   ],
   exports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { LoaderComponent } from './loader/loader.component';
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
-    LoaderComponent
+    LoaderComponent,
+    NgSelectModule
   ]
 })
 export class SharedModule { }
