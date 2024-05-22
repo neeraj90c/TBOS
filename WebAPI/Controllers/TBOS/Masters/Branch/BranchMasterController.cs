@@ -55,7 +55,7 @@ namespace WebAPI.Controllers.TBOS.Masters.Branch
             return Ok(response);
         }
 
-        [HttpGet("ReadByBranchId")]
+        [HttpGet("ReadById")]
         public async Task<IActionResult> ReadByBranchId(int BranchId)
         {
             BranchMasterDTO response = new BranchMasterDTO();

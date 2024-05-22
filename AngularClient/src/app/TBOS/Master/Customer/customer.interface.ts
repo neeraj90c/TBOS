@@ -93,6 +93,7 @@ export interface CustomerMasterDTOPaginated extends PaginatedDTO {
     emailId?: string;
     contactStatus?: number;
     agentName?: string
+    transportName?: string
 }
 
 export interface CreateCustomer {

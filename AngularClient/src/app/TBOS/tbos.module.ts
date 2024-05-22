@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CustomerMasterComponent } from './Master/Customer/customer-master/customer-master.component';
-import { HomeComponent } from './Home/home.component';
+import { SharedModule } from '../Shared/shared.module';
 import { TbosRoutingModule } from '../TBOS/tbos-routing.module';
-import { WorklistComponent } from './worklist/worklist.component';
+import { HomeComponent } from './Home/home.component';
+import { AgentMasterComponent } from './Master/Agent/agent-master/agent-master.component';
 import { CustomerDetailComponent } from './Master/Customer/customer-detail/customer-detail.component';
-import { HttpClientModule } from '@angular/common/http'
+import { CustomerMasterComponent } from './Master/Customer/customer-master/customer-master.component';
+import { TransportMasterComponent } from './Master/Transport/transport-master/transport-master.component';
+import { WorklistComponent } from './worklist/worklist.component';
 
 
 @NgModule({
@@ -13,12 +14,14 @@ import { HttpClientModule } from '@angular/common/http'
     HomeComponent,
     CustomerMasterComponent,
     WorklistComponent,
-    CustomerDetailComponent
+    CustomerDetailComponent,
+    TransportMasterComponent,
+    AgentMasterComponent
   ],
   imports: [
-    CommonModule,
-    TbosRoutingModule,
-    HttpClientModule 
+    SharedModule,
+    TbosRoutingModule
+     
   ]
 })
 export class TbosModule { }

@@ -11,7 +11,7 @@ import { catchError, of, switchMap } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
   loginError: string | null = null;
   isLoading: boolean = false;
 
@@ -25,9 +25,6 @@ export class LoginComponent implements OnInit{
     if (this.authService.isAuthenticated()) {
       this.router.navigate(['/']);
     }
-    this.loaderService.isLoading.subscribe((loading: boolean) => {
-      this.isLoading = loading;
-    });
   }
 
   LoginForm = new FormGroup({
@@ -37,19 +34,23 @@ export class LoginComponent implements OnInit{
   });
 
   loginUser(): void {
+
     if (this.LoginForm.valid) {
-      let userdata:UserLoginDTO = {...this.LoginForm.value} as UserLoginDTO
+      this.loaderService.show()
+      let userdata: UserLoginDTO = { ...this.LoginForm.value } as UserLoginDTO
       this.authService.userlogin(userdata).pipe(
         switchMap((res) => {
           if (res.data.token.trim() !== "") {
             localStorage.setItem('access_token', res.data.token.trim());
             return this.authService.validateToken();
           } else {
+            this.loaderService.dismiss()
             this.loginError = res.data.designation;
             return of(null);
           }
         }),
         catchError((err) => {
+          this.loaderService.dismiss();
           this.authService.SignOutUser();
           return of(null);
         })
@@ -57,6 +58,7 @@ export class LoginComponent implements OnInit{
         next: (res) => {
           if (res) {
             this.authService.saveUserData(res);
+            this.loaderService.dismiss()
             this.router.navigate(['/']);
           }
         }

@@ -20,3 +20,12 @@
 td{
     color: #6c757d;
 }
+
+
+.gstForm .form-check {
+  margin-left: 15px;
+}
+
+.gstForm .form-check:first-of-type {
+  margin-left: 0;
+}

@@ -2360,7 +2360,7 @@ button {
 }
 
 label {
-    font-weight: 700
+    font-weight: 500
 }
 
 address.address-lg {
@@ -2701,5 +2701,7 @@ border-bottom: 2px solid #054ba6; color: #054ba6; font-weight: 600;}
   .menuList:hover{color: #002a80; cursor: pointer;}
   .scrollable{height: 80vh; overflow-x: auto}
   .formHeader{color: #002a80; font-weight: bold; margin-bottom: 0px;}
+
+
 
  
