@@ -6,10 +6,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LoaderComponent } from './loader/loader.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
-    LoaderComponent
+    LoaderComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     HttpClientModule,
     NgbModule,
     LoaderComponent,
-    NgSelectModule
+    NgSelectModule,
+    PaginationComponent
   ]
 })
 export class SharedModule { }

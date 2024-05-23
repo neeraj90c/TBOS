@@ -119,7 +119,7 @@ namespace Application.DTOs.TBOS.Masters
         public int Status { get; set; }
         public string TaxForm { get; set; }
         public string Tin_No { get; set; }
-        public decimal AgentCommission { get; set; }
+        public decimal? AgentCommission { get; set; }
         public string PaymentDay { get; set; }
         public int CreditDaysLock { get; set; }
         public string CstTinNo { get; set; }

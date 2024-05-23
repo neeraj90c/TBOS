@@ -105,7 +105,7 @@ export class CustomerMasterComponent implements OnInit {
     phoneNumber: new FormControl('', Validators.required),
     mobileNumber: new FormControl(''),
     emailId: new FormControl(''),
-    contactStatus: new FormControl(0),
+    contactStatus: new FormControl(2),
     actionUser: new FormControl(this.User.userId)
   })
 
@@ -212,6 +212,8 @@ export class CustomerMasterComponent implements OnInit {
         ([addressResponse, contactResponse]) => {
           console.log('Address created:', addressResponse);
           console.log('Contact created:', contactResponse);
+          this.mainForm.reset();
+          this.customerModal.close()
         },
         error => {
           console.error('Error occurred:', error);
@@ -255,6 +257,21 @@ export class CustomerMasterComponent implements OnInit {
       default:
         break;
     }
+  }
+  setAgentCommission(e: AgentMaster) {
+    console.log(e);
+    this.customerForm.patchValue({
+      agentCommission : e.agentCommission
+    })
+  }
+  handlePageSizeChange(e: { currentPage: number, pageSize: number }) {
+    let body: PaginatedDTO = {
+      pageSize: e.pageSize,
+      pageNo: e.currentPage
+    }
+    this.customerService.ReadAllCustomerPaginated(body).subscribe(res => {
+      this.customerList = res.items
+    })
   }
 
 }

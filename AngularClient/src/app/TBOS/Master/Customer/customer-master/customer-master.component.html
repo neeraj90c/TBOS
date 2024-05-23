@@ -11,16 +11,18 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="createCustomerModal" tabindex="-1" aria-labelledby="createCustomerModalLabel"
+<!-- <div class="modal fade" id="createCustomerModal" tabindex="-1" aria-labelledby="createCustomerModalLabel"
   aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
 
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- table -->
+<app-pagination [EnablePageSize]="true" [rowData]="customerList"
+    (pageSizeChanged)="handlePageSizeChange($event)"></app-pagination>
 <div class="table-responsive tableHeight">
   <table class="table table-bordered table-sm mb-0 fixed-columns" style="width: 200vw;">
     <thead class="bg-light">
@@ -90,9 +92,10 @@
   </table>
 
 </div>
-
+<app-pagination [EnableNavigation]="true" [rowData]="customerList"
+    (pageSizeChanged)="handlePageSizeChange($event)"></app-pagination>
 <!-- pagination -->
-<div class="mt-1">
+<!-- <div class="mt-1">
   <nav class="d-flex justify-content-between">
     <ul class="mt-1">
       Page 1 of 20
@@ -115,7 +118,7 @@
       </li>
     </ul>
   </nav>
-</div>
+</div> -->
 
 
 <ng-template #customerModalTemplate let-modal>
@@ -162,6 +165,7 @@
           clearAllText="Clear"
           [placeholder]="'Select Agent...'"
           formControlName="agentId"
+          (change)="setAgentCommission($event)"
           ></ng-select>
 
           <!-- <select class="form-select form-select-sm" formControlName="agentId">
@@ -451,13 +455,13 @@
           <label>Default Contact</label>
           <div class="d-flex" style="margin-left: 20px;">
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="contactStatus" [value]="'Y'" formControlName="contactStatus">
+              <input class="form-check-input" type="radio" name="contactStatus" [value]="2" formControlName="contactStatus">
               <p class="form-check-label" for="flexRadioDefault1">
                 Yes
               </p>
             </div>
             <div class="form-check" style="margin-left: 10px;">
-              <input class="form-check-input" type="radio" name="contactStatus" [value]="'N'" formControlName="contactStatus">
+              <input class="form-check-input" type="radio" name="contactStatus" [value]="1" formControlName="contactStatus">
               <p for="flexRadioDefault2">
                 No
               </p>

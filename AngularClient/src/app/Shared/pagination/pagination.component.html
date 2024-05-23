@@ -1,0 +1,51 @@
+<!-- pagination -->
+<div class="custom-right my-2" *ngIf="EnablePageSize">
+  <label> Show
+    <select name="example_length" (change)="onPageSizeChanged($event)" class="dropdown-toggle" [(ngModel)]="pageSize">
+      <option>10</option>
+      <option>25</option>
+      <option>50</option>
+      <option>100</option>
+      <option value=1000>ALL</option>
+    </select> entries
+  </label>
+</div>
+
+<div class="mt-1" *ngIf="EnableNavigation">
+    <nav class="d-flex justify-content-between">
+      <ul class="mt-1">
+        Page {{currentPage}} of {{totalPages}}
+      </ul>
+      <ul class="pagination pagination-rounded mb-0 justify-content-end">
+        
+        <li class="page-item" (click)="goToFirstPage()" [ngClass]="{'disabled': currentPage === 1}">
+          <a class="page-link" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+
+        <li class="page-item" (click)="goToPreviousPage()" [ngClass]="{'disabled': currentPage === 1}">
+          <a class="page-link" aria-label="Previous">
+            <span aria-hidden="true">&lsaquo;</span>
+          </a>
+        </li>
+
+        <li class="page-item" [ngClass]="{'active' :  currentPage === page}" *ngFor="let page of getPagesToShow()" (click)="goToNumberPage(page)">
+          <a class="page-link"  > {{ page }}</a>
+        </li>
+
+        <li class="page-item" (click)="goToNextPage()" [ngClass]="{'disabled': currentPage === totalPages}">
+          <a class="page-link" aria-label="Previous">
+            <span aria-hidden="true">&rsaquo;</span>
+          </a>
+        </li>
+
+        <li class="page-item" (click)="goToLastPage()" [ngClass]="{'disabled': currentPage === totalPages}">
+          <a class="page-link"  aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+  </div>
