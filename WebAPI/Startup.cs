@@ -9,6 +9,8 @@ using Application.Interfaces.TBOS.Masters.Agent;
 using Application.Interfaces.TBOS.Masters.Branch;
 using Application.Interfaces.TBOS.Masters.Customer;
 using Application.Interfaces.TBOS.Masters.Transport;
+using Application.Interfaces.TBOS.Ref.ValueList;
+using Application.Interfaces.TBOS.Ref.ValueListItem;
 using Application.Interfaces.TBOS.UC;
 using Application.Interfaces.User;
 using Infrastructure.Persistance.Services;
@@ -21,6 +23,7 @@ using Infrastructure.Persistance.Services.TBOS.Masters.Agent;
 using Infrastructure.Persistance.Services.TBOS.Masters.Branch;
 using Infrastructure.Persistance.Services.TBOS.Masters.Customer;
 using Infrastructure.Persistance.Services.TBOS.Masters.Transport;
+using Infrastructure.Persistance.Services.TBOS.Ref.ValueList;
 using Infrastructure.Persistance.Services.TBOS.UC.Address;
 using Infrastructure.Persistance.Services.TBOS.UC.Contact;
 using Infrastructure.Persistance.Services.User;
@@ -90,8 +93,15 @@ namespace WebAPI
             services.AddTransient<ICustomerMaster, CustomerMasterService>();
             services.AddTransient<ITransportMaster, TransportMasterService>();
             services.AddTransient<IAgentMaster, AgentMasterService>();
+
+
             services.AddTransient<IContactDetails, ContactDetailService>();
             services.AddTransient<IAddressDetails, AddressDetailService>();
+
+            services.AddTransient<IValueList, ValueListService>();
+            services.AddTransient<IValueListItem, ValueListItemService>();
+
+
 
 
             //For Directory Browsing, comment out for Prod Release

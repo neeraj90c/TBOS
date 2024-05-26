@@ -16,6 +16,8 @@ import { ContactDetailService } from 'src/app/TBOS/UC/Contact/contact-detail.ser
 import { forkJoin, switchMap } from 'rxjs';
 import { CreateAddress } from 'src/app/TBOS/UC/Address/address.interface';
 import { CreateContact } from 'src/app/TBOS/UC/Contact/contact.interface';
+import { ValueListItemDTO } from 'src/app/TBOS/Ref/ValueListItem/valuelistitem.interface';
+import { ValueListItemService } from 'src/app/TBOS/Ref/ValueListItem/value-list-item.service';
 
 @Component({
   selector: 'app-customer-master',
@@ -32,6 +34,7 @@ export class CustomerMasterComponent implements OnInit {
     private addressService: AddressDetailService,
     private contactService: ContactDetailService,
     private authService: AuthenticationService,
+    private vliService: ValueListItemService,
     private modalService: NgbModal
   ) { }
 
@@ -40,6 +43,7 @@ export class CustomerMasterComponent implements OnInit {
   agentList: AgentMaster[] = [];
   transportList: TransportMaster[] = [];
   customerModal!: NgbModalRef;
+  weekDays: ValueListItemDTO[]=[] 
 
   customerForm = new FormGroup({
     customerId: new FormControl(0),
@@ -131,10 +135,10 @@ export class CustomerMasterComponent implements OnInit {
     this.transportMasterService.ReadAllTransports().subscribe(res => {
       this.transportList = res.items
     })
-    this.addressService.ReadAllAddress().subscribe(res => {
-      console.log(res);
-
+    this.vliService.ReadAllByVLName("WeekDays").subscribe(res=>{
+      this.weekDays = res.items
     })
+
   }
 
   openCustomerModal() {

@@ -72,3 +72,16 @@ export const deleteContact = TBOS_BaseURL + 'ContactDetail/Delete'
 export const getContactByMasterCode = TBOS_BaseURL + 'ContactDetail/ReadByMasterCode'
 export const getContactByMasterCodeDefault = TBOS_BaseURL + 'ContactDetail/ReadByMasterCodeDefault'
 //#endregion
+
+//#region ValueList API 
+export const getAllValueList = TBOS_BaseURL + 'ValueList/ReadAll'
+export const createValueList = TBOS_BaseURL + 'ValueList/Create'
+export const updateValueList = TBOS_BaseURL + 'ValueList/Update'
+//#endregion
+
+//#region ValueListItem API 
+export const getAllByValueListId = TBOS_BaseURL + 'ValueListItem/ReadByValueListId'
+export const getAllByVLName = TBOS_BaseURL + 'ValueListItem/ReadByVLName'
+export const createValueListItem = TBOS_BaseURL + 'ValueListItem/Create'
+export const updateValueListItem = TBOS_BaseURL + 'ValueListItem/Update'
+//#endregion

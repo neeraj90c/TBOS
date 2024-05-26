@@ -188,10 +188,7 @@
           <label >Pmt. Days</label>
           <select class="form-select form-select-sm" formControlName="paymentDay">
             <option selected disabled value="">Choose...</option>
-            <option>Sunday</option>
-            <option>Monday</option>
-            <option>Tuesday</option>
-            <option>Wednesday</option>
+            <option *ngFor="let day of weekDays" [value]="day.vliCode">{{day.vliName}}</option>
           </select>
 
         </div>
@@ -234,8 +231,10 @@
           <label >Default Price</label>
           <select class="form-select form-select-sm" formControlName="defaultPrice">
             <option selected disabled value="">Choose...</option>
-            <option>P1</option>
-            <option>P2</option>
+            <option value='P1'>P1</option>
+            <option value='P2'>P2</option>
+            <option value='P3'>P3</option>
+            <option value='P'>P</option>
           </select>
         </div>
         <div class="col-md-4 mt-1">
