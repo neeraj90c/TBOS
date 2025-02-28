@@ -82,6 +82,7 @@ export const updateValueList = TBOS_BaseURL + 'ValueList/Update'
 //#region ValueListItem API 
 export const getAllByValueListId = TBOS_BaseURL + 'ValueListItem/ReadByValueListId'
 export const getAllByVLName = TBOS_BaseURL + 'ValueListItem/ReadByVLName'
+export const getAllByVLNameMulti = TBOS_BaseURL + 'ValueListItem/ReadMulti'
 export const createValueListItem = TBOS_BaseURL + 'ValueListItem/Create'
 export const updateValueListItem = TBOS_BaseURL + 'ValueListItem/Update'
 //#endregion

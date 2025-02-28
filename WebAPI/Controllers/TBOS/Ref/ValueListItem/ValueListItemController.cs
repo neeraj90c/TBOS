@@ -25,7 +25,7 @@ namespace WebAPI.Controllers.TBOS.Ref.ValueListItem
             ValueListItemAll response = new ValueListItemAll();
 
 
-            response = await mediator.Send(new ReadByValueListIdCommand 
+            response = await mediator.Send(new ReadByValueListIdCommand
             {
                 ValuesListId = ValuesListId
             });
@@ -56,7 +56,7 @@ namespace WebAPI.Controllers.TBOS.Ref.ValueListItem
         [HttpPost("Create")]
         public async Task<IActionResult> Create([FromBody] CreateValueListItem createValueListItem)
         {
-            ValueListItemDTO response = new ValueListItemDTO 
+            ValueListItemDTO response = new ValueListItemDTO
             ();
             response = await mediator.Send(new CreateValueListItemCommand
             {
@@ -76,6 +76,21 @@ namespace WebAPI.Controllers.TBOS.Ref.ValueListItem
             response = await mediator.Send(new UpdateValueListItemCommand
             {
                 updateValueListItem = updateValueListItem
+            });
+
+            if (response == null)
+                return Ok(APIResponse<string>.Unauthorized("Please check login credentials"));
+
+            return Ok(response);
+        }
+
+        [HttpPost("ReadMulti")]
+        public async Task<IActionResult> ReadMulti([FromBody] MultiVLNameRequest multiVLNameRequest)
+        {
+            VlDictionaryList response = new VlDictionaryList();
+            response = await mediator.Send(new ReadByVLNameMultiCommand
+            {
+                multiVLNameRequest = multiVLNameRequest
             });
 
             if (response == null)

@@ -13,6 +13,8 @@ namespace Application.Interfaces.TBOS.Ref.ValueListItem
         public Task<ValueListItemDTO> Update(UpdateValueListItem updateValueListItem);
         public Task<ValueListItemAll> ReadByValueListId(int ValuesListId);
         public Task<ValueListItemAll> ReadByVLName(string vlName);
+        public Task<VlDictionaryList> ReadByVLNameMulti(MultiVLNameRequest multiVLNameRequest);
+
 
     }
 }

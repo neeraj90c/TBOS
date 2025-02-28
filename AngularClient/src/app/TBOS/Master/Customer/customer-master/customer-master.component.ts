@@ -1,23 +1,22 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { forkJoin, switchMap } from 'rxjs';
+import { User } from 'src/app/Common/Authentication/auth.interface';
+import { AuthenticationService } from 'src/app/Common/Authentication/authentication.service';
+import { ValueListItemService } from 'src/app/TBOS/Ref/ValueListItem/value-list-item.service';
+import { ValueListItemDTO, VlDictionary } from 'src/app/TBOS/Ref/ValueListItem/valuelistitem.interface';
+import { AddressDetailService } from 'src/app/TBOS/UC/Address/address-detail.service';
+import { CreateAddress } from 'src/app/TBOS/UC/Address/address.interface';
+import { ContactDetailService } from 'src/app/TBOS/UC/Contact/contact-detail.service';
+import { CreateContact } from 'src/app/TBOS/UC/Contact/contact.interface';
 import { PaginatedDTO } from 'src/app/TBOS/common.interface';
 import { AgentMasterService } from '../../Agent/agent-master.service';
 import { AgentMaster } from '../../Agent/agent.interface';
-import { CreateCustomer, CustomerMasterDTO, CustomerMasterDTOPaginated, UpdateCustomer } from '../customer.interface';
-import { CustomerService } from '../customer.service';
 import { TransportMasterService } from '../../Transport/transport-master.service';
 import { TransportMaster } from '../../Transport/transport.interface';
-import { AddressDetailService } from 'src/app/TBOS/UC/Address/address-detail.service';
-import { AuthenticationService } from 'src/app/Common/Authentication/authentication.service';
-import { User } from 'src/app/Common/Authentication/auth.interface';
-import { updateContact, updateCustomer } from 'src/app/GlobalVariables';
-import { ContactDetailService } from 'src/app/TBOS/UC/Contact/contact-detail.service';
-import { forkJoin, switchMap } from 'rxjs';
-import { CreateAddress } from 'src/app/TBOS/UC/Address/address.interface';
-import { CreateContact } from 'src/app/TBOS/UC/Contact/contact.interface';
-import { ValueListItemDTO } from 'src/app/TBOS/Ref/ValueListItem/valuelistitem.interface';
-import { ValueListItemService } from 'src/app/TBOS/Ref/ValueListItem/value-list-item.service';
+import { CreateCustomer, CustomerMasterDTOPaginated } from '../customer.interface';
+import { CustomerService } from '../customer.service';
 
 @Component({
   selector: 'app-customer-master',
@@ -43,13 +42,15 @@ export class CustomerMasterComponent implements OnInit {
   agentList: AgentMaster[] = [];
   transportList: TransportMaster[] = [];
   customerModal!: NgbModalRef;
-  weekDays: ValueListItemDTO[]=[] 
+
+  Weekdays:VlDictionary[] = []
+  TaxFormValues:VlDictionary[] = []
 
   customerForm = new FormGroup({
     customerId: new FormControl(0),
     customerName: new FormControl('', Validators.required),
     transportId: new FormControl(0),
-    agentId: new FormControl(0),
+    agentId: new FormControl(''),
     paymentTerm: new FormControl(0),
     branchId: new FormControl(0),
     customerBranch: new FormControl(''),
@@ -135,8 +136,16 @@ export class CustomerMasterComponent implements OnInit {
     this.transportMasterService.ReadAllTransports().subscribe(res => {
       this.transportList = res.items
     })
-    this.vliService.ReadAllByVLName("WeekDays").subscribe(res=>{
-      this.weekDays = res.items
+    this.vliService.ReadAllByVLNameMulti({multiVLName:"WeekDays,Tax Form"}).subscribe(res => {
+
+      this.Weekdays = res.items.filter(i=>{
+        return i.vlName.toLowerCase().includes('weekdays') 
+      })
+
+      this.TaxFormValues= res.items.filter(i=>{
+        return i.vlName.toLowerCase().includes('tax form') 
+      })
+
     })
 
   }
@@ -263,9 +272,8 @@ export class CustomerMasterComponent implements OnInit {
     }
   }
   setAgentCommission(e: AgentMaster) {
-    console.log(e);
     this.customerForm.patchValue({
-      agentCommission : e.agentCommission
+      agentCommission: e.agentCommission
     })
   }
   handlePageSizeChange(e: { currentPage: number, pageSize: number }) {
@@ -276,6 +284,9 @@ export class CustomerMasterComponent implements OnInit {
     this.customerService.ReadAllCustomerPaginated(body).subscribe(res => {
       this.customerList = res.items
     })
+  }
+  handleAgentBlur(event: { term: string, items: any[] }) {
+    console.log(event);
   }
 
 }

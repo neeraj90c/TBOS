@@ -159,6 +159,7 @@
           <label >Agent Name</label>
 
           <ng-select  style="cursor: pointer;"
+          #agentSelect
           [items]="agentList" 
           [bindLabel]="'agentName'" 
           [bindValue]="'agentId'" 
@@ -166,6 +167,7 @@
           [placeholder]="'Select Agent...'"
           formControlName="agentId"
           (change)="setAgentCommission($event)"
+          (search)="handleAgentBlur($event)"
           ></ng-select>
 
           <!-- <select class="form-select form-select-sm" formControlName="agentId">
@@ -188,7 +190,7 @@
           <label >Pmt. Days</label>
           <select class="form-select form-select-sm" formControlName="paymentDay">
             <option selected disabled value="">Choose...</option>
-            <option *ngFor="let day of weekDays" [value]="day.vliCode">{{day.vliName}}</option>
+            <option *ngFor="let day of Weekdays" [value]="day.vlKey">{{day.vLvalue}}</option>
           </select>
 
         </div>
@@ -200,7 +202,10 @@
         <div class="col-md-4 mt-1">
           <label for="area" >
             Tax Form</label>
-          <input type="text" class="form-control form-control-sm" formControlName="taxForm">
+          <select class="form-select form-select-sm" formControlName="taxForm">
+            <option selected disabled value="">Choose...</option>
+            <option *ngFor="let tax of TaxFormValues" [value]="tax.vlKey">{{tax.vLvalue}}</option>
+          </select>
           <ng-container *ngIf="taxFormCTRL.errors && taxFormCTRL.hasError('required') && taxFormCTRL.touched"> <span class="text-danger">required</span> </ng-container>
         </div>
         <div class="col-md-4 mt-1">

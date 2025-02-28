@@ -35,3 +35,13 @@ export interface UpdateValueListItem {
     displaySeq: number;
     actionUser: string;
 }
+
+export interface VlDictionary {
+    vlName: string
+    vlKey: number
+    vLvalue: string
+}
+
+export interface VlDictionaryList {
+    items: VlDictionary[]
+}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Application.DTOs.TBOS.Ref.ValueList
 {
@@ -48,5 +49,21 @@ namespace Application.DTOs.TBOS.Ref.ValueList
         public int displaySeq { get; set; }
         public string ActionUser { get; set; }
 
+    }
+
+    public class VlDictionary
+    {
+        public string vlName { get; set; }
+        public int vlKey { get; set; }
+        public string vLvalue { get; set; }
+    }
+    public class VlDictionaryList
+    {
+        public IEnumerable<VlDictionary> Items { get; set; }
+    }
+
+    public class MultiVLNameRequest
+    {
+        public string multiVLName { get; set; }
     }
 }

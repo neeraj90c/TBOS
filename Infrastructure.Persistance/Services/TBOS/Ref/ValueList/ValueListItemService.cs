@@ -23,6 +23,7 @@ namespace Infrastructure.Persistance.Services.TBOS.Ref.ValueList
         private const string SP_ValueListItem_Update = "ref.ValueListItem_Update";
         private const string SP_ValueListItem_ReadByValueListId = "ref.ValueListItem_ReadByValueListId";
         private const string SP_ValueListItem_ReadByVLName = "ref.ValueListItem_ReadByVLName";
+        private const string SP_multiVLCBlist = "ref.multiVLCBlist";
 
 
         public ValueListItemService(IOptions<ConnectionSettings> connectionSettings, ILogger<ValueListItemService> logger, IOptions<APISettings> settings) : base(connectionSettings.Value.AppKeyPath)
@@ -124,6 +125,28 @@ namespace Infrastructure.Persistance.Services.TBOS.Ref.ValueList
                     response.Items = await connection.QueryAsync<ValueListItemDTO>(SP_ValueListItem_ReadByVLName, new
                     {
                         vlName = vlName
+
+                    }, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return response;
+        }
+
+        public async Task<VlDictionaryList> ReadByVLNameMulti(MultiVLNameRequest multiVLNameRequest)
+        {
+            VlDictionaryList response = new VlDictionaryList();
+            _logger.LogInformation($"Started readind ValueListITem for vlName : " + multiVLNameRequest.multiVLName);
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(base.ConnectionString))
+                {
+                    response.Items = await connection.QueryAsync<VlDictionary>(SP_multiVLCBlist, new
+                    {
+                        multiVLName = multiVLNameRequest.multiVLName
 
                     }, commandType: CommandType.StoredProcedure);
                 }
